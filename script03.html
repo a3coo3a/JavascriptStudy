@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var num1 = "10";
+    var num2 = 10;
+
+    console.log(num1 == num2);  /* true - 값만 비교 */
+    console.log(num1 === num2); /* false - 값과 데이터 타입까지 동일한지 비교 */
+
+    console.log(num1 != num2); /* false - 값 그 자체를 비교하기 때문에 */
+    console.log(num1 !== num2); /* true - 값은 같지만 데이터 타입이 다르기 때문에  */
+    
+    var a;  /* undefined */
+    var b = null;  /* null */
+
+    console.log(a, b, a == b, a === b, typeof a, typeof b);  /* + 한것과 같은 효과 */
+    /* 둘다 없는 값이므로 == 는 true
+      둘의 데이터 타입은 undefined, object로 다르기 때문에 false */
+    console.log(a != b, a !== b);
+    /* false - 없는 것으로 값이 같기에
+      true - 값은 같지만 데이터 타입이 다른것이 맞기에 */
+
+    // JS에서 비교 연산자를 쓸때 3개 짜리를 쓰는게 좀 더 권고 되고 있습니다.
+    
+ </script>
+</body>
+</html>

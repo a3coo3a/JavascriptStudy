@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // var변수는 동일한 변수 중복을 선언할 수 있습니다. 실제로 변수 선언이 일어날때마다 새로운 변수가 만들어지는 형태로 동작합니다.
+
+    var num1 = "10"; //문자
+    var num2 = '10'; //문자
+    var num3 = 10; //숫자
+
+    num1 = "20";/* 새로만든다 생각하면됨. */
+    num2 = '20';
+    num3 = "30";
+
+    console.log(num1);
+    console.log(num2);
+    console.log(num3);
+
+    console.log(num1 + num2);
+    console.log(40 + num1);
+
+    var result = num1 + num2 + num3 + 100;
+    console.log(result);
+
+    console.log("---------------------------------------------");
+
+    // let 은 es6에 새로 도입된 타입으로 동일 변수명을 또다시 선언할 수 없다.
+    let a = 1;
+    //let a = 100;
+
+    console.log("----------------------------------------------");
+    // script의 자료형
+    // - number, string , boolean, undefined, null number
+    var i1 = 10;
+    var i2 = 20;
+    var i3 = i1 + i2;
+    console.log(i3);
+
+    // string
+    var s1 = "나는 ";
+    var s2 = '너에게 ';
+    var s3 = "'안녕!' 이라고 말했다";
+    console.log(s1 + s2 + s3);
+
+    // boolean true = 1을 포함한 나머지, false = 0 으로도 표기가 가능함.
+    var boolean1 = true;
+    var boolean2 = false;
+    console.log(boolean1);
+    console.log(boolean2);
+
+    // undefined - 데이터 변수는 선언했지만, 초기화 하지 않은 경우에 자동으로 저장
+    var nu;
+    console.log(nu);
+
+    //null - 값은 저장했으나, 그 값이 존재하지 않을 때
+    var tag = document.querySelector("li");
+    console.log(tag);
+
+    console.log(typeof i1);
+    console.log(typeof s1);
+    console.log(typeof boolean1);
+    console.log(typeof un);
+    console.log(typeof tag);
+  </script>
+</body>
+
+</html>
