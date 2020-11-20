@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+
+  var result = method(1,2,3,4,5,6,"hello");  // 에러 없음.
+  console.log(result);
+
+  // 자바스크립트에서 매개변수는 단순히 인자값에 들어오는 값이 몇개인지 알려주고,
+  // 쉽게 접근이 가능하도록 이름을 붙여 놓은 형태
+  function method(a, b){
+    console.log("함수가 호출됨");
+    console.log(a);
+    console.log(b);
+
+    console.log(arguments.length);
+    console.log(arguments[0]);
+    console.log(arguments[1]);
+    console.log(arguments[2]);
+    console.log(arguments[3]);
+    console.log(arguments[4]);
+    console.log(arguments[5]);
+    console.log(arguments[6]);
+
+    return a+b;
+  }
+
+
+</script>
+
+
+</body>
+</html>

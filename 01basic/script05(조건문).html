@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    var num1 = 1;
+    var num2 = 2;
+    
+    if(num1 > num2 && true) {
+      document.write("참 입니다.<br>");
+    } else{
+      document.write("거짓입니다.<br>")
+    }
+
+    // 중첩 if 문
+    // Math.random() - 0~1미만 랜덤 수
+    console.log(Math.random());
+
+    var point = Math.random()*101;
+    console.log(point);
+
+    var point = parseInt(Math.random()*101);
+    console.log(point);  /* int로 바꿔주는 기능 */
+
+    if (point >= 90) {
+        if (point >= 95) {
+          console.log("A");
+        } else {
+          console.log("B");
+        }
+      } else if (point >= 80) {
+        console.log("C");
+      } else {
+        console.log("D");
+      }
+
+
+      // 문자열 비교 (비교연산자 사용)
+      var name = '홍길동';
+      if(name === '홍길동'){
+        console.log("홍길동이 맞습니다.");
+      }
+
+      // switch
+     switch (name) {
+        case "홍길동":
+          console.log("홍길동입니다.");
+          break;
+        case "이순신":
+          console.log("이순신입니다.");
+          break;
+        default:
+          console.log("둘다 아닙니다.");
+          break;
+      }
+
+
+  </script>
+</body>
+</html>

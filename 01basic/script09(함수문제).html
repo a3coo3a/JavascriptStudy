@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <button type="button" onclick="check()">클릭</button>
+  <button type="button" onclick="method(2)">홀짝판별</button>
+
+  <script>
+    // 일반함수
+    /* function check(){
+      alert("자바스크립트의 일반함수")
+    }
+    function method(n){
+      if(n%2 == 0){
+        alert("짝수입니다.");
+      }else if(n%2 == 1){
+        alert("홀수입니다.");
+      }
+    } */
+    
+    // 익명함수
+    
+    var check = function(){
+      alert("자바스크립트의 익명함수");
+    }
+
+    var method = function(n){
+      if(n%2 == 0){
+        alert("익명함수) 짝수입니다.");
+      }else if(n%2 == 1){
+        alert("익명함수) 홀수입니다.");
+      }
+    }
+
+    
+    // function point(name, jum1, jum2, jum3){
+      //   var avg = (jum1+jum2+jum3)/3;
+      //   return name + "님의 평균은 : " + avg;
+      // }
+      
+      // 익명함수
+      var point = function(name, jum1, jum2, jum3){
+        var avg = (jum1+jum2+jum3)/3;
+        return name + "님의 평균은 : " + avg;
+      }
+
+      console.log(point("홍길동",88,90,90));
+
+  </script>
+</body>
+</html>
