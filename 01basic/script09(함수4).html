@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    var arrow1 = function(){
+      console.log("익명함수");
+    }
+    //   ▼▼▼▼▼▼▼▼▼ 변신!
+
+    var arrow2 = () => {
+      console.log("화살표익명함수");
+    }
+
+    arrow1();
+    arrow2();
+
+    var arrow3 = (a, b) => {
+      console.log("화살표함수 매개변수 있음요");
+      console.log(a,b);
+    }
+    arrow3(10,5);
+
+    // 가독성을 높이기 위해 사용
+    // 자바의 람다식 같음.
+
+
+    var arrow4 = function(){
+      return "익명함수 리턴!"
+    }
+    console.log(arrow4());
+
+    //   ▼▼▼▼▼▼▼▼▼ 화살표 함수로 변신!
+
+    // 리턴이 1개 이면 중괄호 생략 가능
+    var arrow5 = () => "화살표함수 1개 리턴";
+    console.log(arrow5());
+
+
+    
+  </script>
+</body>
+</html>

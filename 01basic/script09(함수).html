@@ -1,48 +1,45 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-    func2(); // 호이스팅 - 당겨쓴다. 선언적 함수에서만 사용 가능
-    // a(); // 에러 
-    // b(); // 에러
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//func2(); // 호이스팅 - 당겨쓴다. 선언적 함수에서만 사용 가능
+			// a(); // 에러
+			// b(); // 에러
 
+			/* 선언적 함수 vs 익명함수 */
+			function func1() {
+				console.log('func1 실행');
+			}
 
-    /* 선언적 함수 vs 익명함수 */
-    function func1(){
-      console.log("func1 실행");
-    }
+			function func2() {
+				console.log('func2 실행');
+			}
 
-    function func2(){
-      console.log("func2 실행");
-    }
+			//func1();
 
-    func1();
-    
+			// 함수자체를 변수에 저장할 수 있다.
+			var a = func1;
+			console.log(a);
 
-    // 함수자체를 변수에 저장할 수 있다.
-    var a = func1;
-    console.log(a);
+			var a = func1(); /* 리턴값을 받는 것 */
+			console.log(a);
 
-    var a = func1();  /* 리턴값을 받는 것 */
-    console.log(a);
+			var a = func1;
+			a();
+			func1();
 
-    var a = func1;
-    a();
-    func1();
-
-
-    // 익명함수 - 변수에 함수를 저장해서, 마치 함수처럼 쓰도록 만들어줌
-    // 호이스팅이 되지 않음.
-    var b = function(){
-      console.log("func3 실행");
-    }
-    console.log(b);
-    b();   //익명함수 호출
-  </script>
-</body>
+			// 익명함수 - 변수에 함수를 저장해서, 마치 함수처럼 쓰도록 만들어줌
+			// 호이스팅이 되지 않음.
+			var b = function () {
+				console.log('func3 실행');
+			};
+			console.log(b);
+			b(); //익명함수 호출
+		</script>
+	</body>
 </html>

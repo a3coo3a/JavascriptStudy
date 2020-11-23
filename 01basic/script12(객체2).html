@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // JSON - 자바스크립트 객체 표기법
+    // JSON 파싱 - 우리서버에서 다른 원격의 곳에 json형식으로 자료를 주고 받는 것.
+    // - 원격에 있는 컴퓨터와 통신과정에서 데이터를 주고 받을 때,
+    //   문자열의 형태로 주고 받게 됩니다.
+    //   문자열 -> JSON형태로 변경 , JSON -> 문자열 변경
+    var data = [
+      {id : 'kkk123', title : 'java', content : 'good'},
+      {id : 'aaa123', title : 'jsp', content : 'nice'},
+      {id : 'bbb123', title : 'js', content : 'soso'}
+    ];
+    console.log(typeof data);
+    console.log(data);
+    
+    console.log(typeof JSON.stringify(data))
+    console.log(JSON.stringify(data))   // 객체 -> 문자열
+
+    var result = JSON.stringify(data);
+    console.log(typeof JSON.parse(result)); 
+    console.log(JSON.parse(result));    // 문자열 -> 객체
+
+    // 주의!!!
+    //var x = '{id : "kkk123"}';
+    //console.log(JSON.parse(x));  // error
+    var xX = '{"id":"kkk123"}'
+    var number = '{"num":20}'   // 숫자값은 그냥 표기
+    console.log(JSON.parse(xX), JSON.parse(number));   // key값까지도 문자열로 감싸져 있어야함.
+    // 형식을 지키지 않을시 변경되지 않음.
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function func1() {
+				alert('1번함수');
+			}
+			function func2() {
+				alert('2번함수');
+			}
+
+			// 즉시 실행 함수 - 일반적으로 페이지 마지막에,순서대로 함수를 실행
+			(function (x, y, z) {
+				console.log('즉시실행함수');
+				console.log(x + y + z);
+				func1();
+				func2();
+			})(1, 2, 3);
+		</script>
+	</body>
+</html>
