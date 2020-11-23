@@ -1,50 +1,48 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// var변수의 유효범위
+			// - function까지
+			// 지역변수 : 함수안에 선언된 변수
+			// 전역변수 : 지역변수외의 변수
 
-    // var변수의 유효범위
-    // - function까지
-    // 지역변수 : 함수안에 선언된 변수
-    // 전역변수 : 지역변수외의 변수
+			var num1 = 100;
+			if (true) {
+				var num1 = 200; // 전역변수
+			}
 
-    var num1 = 100;
-    if(true){
-      var num1 = 200;   // 전역변수
-    }
+			console.log(num1); //200
+			// 블록 안에서는 전, 지역 변수의 개념이 없음.
+			// - 그래서 전역변수로 선언됨.
 
-    console.log(num1);      //200
-    // 블록 안에서는 전, 지역 변수의 개념이 없음.
-    // - 그래서 전역변수로 선언됨.
+			var num2 = 50;
+			function add() {
+				var num2 = 500;
+			}
+			add();
+			console.log(num2); //50
+			// 함수안에서 선언된 변수는 지역변수로 선언.
 
-    var num2 = 50;
-    function add(){
-      var num2 = 500;
-    }
-    add();
-    console.log(num2);    //50
-    // 함수안에서 선언된 변수는 지역변수로 선언.
+			// let은 자바스크립트의 var변수의 문제점을 보완하기 위해 나온 es6문법
+			// 블록안에 선언된 변수를 지역변수로 판별
 
-    // let은 자바스크립트의 var변수의 문제점을 보완하기 위해 나온 es6문법
-    // 블록안에 선언된 변수를 지역변수로 판별
-  
-    let num3 = 100;    // 전역변수
-    if(true){
-      let num3 = 200;    // 지역변수
-    }
-    console.log(num3);   // 100
+			let num3 = 100; // 전역변수
+			if (true) {
+				let num3 = 200; // 지역변수
+			}
+			console.log(num3); // 100
 
-    let num4 = 100;     // 전역변수
-    function add2(){
-      let num4 = 200;   // 지역변수
-    }
-    console.log(num4);   // 100
-    
-  </script>
-</body>
+			let num4 = 100; // 전역변수
+			function add2() {
+				let num4 = 200; // 지역변수
+			}
+			console.log(num4); // 100
+		</script>
+	</body>
 </html>
