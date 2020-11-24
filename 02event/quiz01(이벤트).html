@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 1. 체크박스 버튼을 클릭했을때  
+      '1번조항에 동의 하였습니다' -->
+  <!-- <input type="checkbox" onclick="agree(this)" value="1">조항 1
+  <input type="checkbox" onclick="agree(this)" value="2">조항 2
+  <input type="checkbox" onclick="agree(this)" value="3">조항 3
+  <input type="checkbox" onclick="agree(this)" value="4">조항 4
+  
+  <hr/> -->
+  <!-- 2. 기억하기 버튼을 클릭했을 때, input 태그의 공백 여부, 체크 박스여부 확인 -->
+    ID : <input type="text" id="id">
+    <input type="checkbox" id="remember" value="true">기억하기
+    <button type="button" id="check">확인</button>
+  <script>
+    function agree(check){
+      alert(check.value + "번 조항에 동의 하였습니다.");  
+    }
+
+    var check = document.getElementById("check");
+    check.addEventListener("click",idValue);
+    check.addEventListener("click",boxValue);
+
+    function idValue(){
+      var id = document.getElementById("id");
+      console.log(id);
+      /* if( !== null ){
+        console.log(document.getElementById("id").value);
+      } .value.replace(" ","")
+    }*/
+    function boxValue(){
+      if(document.getElementById("remember").checked){
+        console.log(document.getElementById("remember").value);
+      }
+    }
+  </script>
+
+<hr>
+  <!-- 선생님 답안 -->
+  <!-- ID : <input type="text" id="id">
+  <input type="checkbox" id="remember">기억하기
+  <button type="button" id="btn">확인</button> -->
+  <!-- <script>
+    var id = document.getElementById("id").replace(" ","");
+    var remember = document.getElementById("remember");
+    var btn = document.getElementById("btn");
+  
+    btn.onclick = function(){
+      // checkbox에 체크여부는 checked
+      console.log("value값 : " + id.value);
+      console.log("체크여부 : " + remember.checked);
+    }
+  </script>  -->
+</body>
+</html>

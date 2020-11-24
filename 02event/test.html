@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  ID : <input type="text" id="id">
+  <input type="checkbox" id="remember">기억하기
+  <button type="button" id="check">확인</button>
+  
+  <script>
+    var check = document.getElementById("check");
+    check.onclick = function(){
+    var id = document.getElementById("id").value.replace(/ /g,"");
+    if(id.length > 0){
+      console.log("공백없음");
+      console.log(id);
+    }
+
+  }
+  </script>
+</body>
+</html>

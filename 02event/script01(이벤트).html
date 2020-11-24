@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <button type="button" onclick="alert('인라인이벤트')">인라인 이벤트</button> -->
+  <!-- <button type="button" onclick="check(); 
+                                  function check(){
+                                    alert('인라인이벤트');
+                                  }">
+    인라인 이벤트
+  </button> -->
+  <!-- <button type="button" onclick="javascript:check()">인라인 이벤트</button> -->
+  <button type="button" onclick="check()">
+    인라인 이벤트
+  </button>
+
+  <script>
+    function check(){
+      alert('인라인이벤트');
+    }
+
+  </script>
+
+  <hr/>
+  <!-- 여러 태그에 동일 인라인 이벤트를 넣는 경우 -->
+  <button type="button" onclick="check2(this)" style="width: 50px; height: 50px;" id="1">a</button>
+  <button type="button" onclick="check2(this)" style="width: 50px; height: 50px;" id="2">b</button>
+  <button type="button" onclick="check2(this)" style="width: 50px; height: 50px;" id="3">c</button>
+  <button type="button" onclick="check2(this)" style="width: 50px; height: 50px;" id="4">d</button>
+  <button type="button" onclick="check2(this)" style="width: 50px; height: 50px;" id="5">e</button>
+
+  <script>
+    function check2(target){
+      console.log("실행됨");
+      // 자바스크립트의 this란 : 실행 문맥에 따른 나 자신 
+      // this키워드는 실행문맥의 자신을 가르키며 .을 찍어서 태그에 속성들에 접근이 가능합니다.
+      // console.log(target);
+      // console.log(target.type);
+      // console.log(target.onclick);
+      // console.log(target.id);
+      
+      // innerHTML키워드는 선택된 태그의 text 요소를 가르킵니다.
+      // console.log(a.innerHTML);
+      // target.innerHTML = "hello world";
+      target.innerHTML = target.id;
+    }
+
+  </script>
+
+
+</body>
+</html>

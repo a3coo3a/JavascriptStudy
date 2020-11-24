@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="name">단어를 선택하세요</h1>
+
+  (select에서 value 속성은 선택된 값을 의미합니다.)
+<br/>
+<br/>
+  <select id="hi">
+    <option value="선택" selected>선택</option>
+    <option value="한국어">안녕</option>
+    <option value="영어">hello</option>
+    <option value="중국어">니하오</option>
+  </select>
+
+  <script>
+    var hi = document.getElementById("hi");
+    hi.onchange = function (){
+      
+    if(hi.value !== "선택"){
+      document.getElementById("name").innerHTML = hi.value + " 입니다.";
+    } else {
+      document.getElementById("name").innerHTML = "단어를 선택하세요";
+    }
+  }
+  </script>
+
+</body>
+</html>

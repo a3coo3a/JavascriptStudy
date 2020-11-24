@@ -1,110 +1,111 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-    //자바스크립트에서 객체는 {}로 표기
-    var person = {
-      key : '나는값',
-      name : '홍길동',
-      age : 20,
-      arr : [1,2,3],
-      obj : {one:10, two:20, three:30}
-    };
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//자바스크립트에서 객체는 {}로 표기
+			var person = {
+				key: '나는값',
+				name: '홍길동',
+				age: 20,
+				arr: [1, 2, 3],
+				obj: { one: 10, two: 20, three: 30 },
+			};
 
-    console.log(person);
+			console.log(person);
 
-    // proto : 상속받아 온 함수를 의미, 즉, 사용할 수 있는 함수가 되겟다.
+			// proto : 상속받아 온 함수를 의미, 즉, 사용할 수 있는 함수가 되겟다.
 
-  
-    console.log(person.name);
-    console.log(person.age);
-    console.log(person.arr[0]);
-    console.log(person.arr[1]);
-    console.log(person.arr[2]);
-    console.log(person.obj.one);
+			console.log(person.name);
+			console.log(person.age);
+			console.log(person.arr[0]);
+			console.log(person.arr[1]);
+			console.log(person.arr[2]);
+			console.log(person.obj.one);
 
-    // 객체에 접근하는 2번째 방법
-    console.log(person["name"]);
-    console.log(person["age"]);
-    console.log(person["arr"][0]);
-    console.log(person["arr"][1]);
-    console.log(person["arr"][2]);
+			// 객체에 접근하는 2번째 방법
+			console.log(person['name']);
+			console.log(person['age']);
+			console.log(person['arr'][0]);
+			console.log(person['arr'][1]);
+			console.log(person['arr'][2]);
 
-    console.log(person["obj"]["one"]);
+			console.log(person['obj']['one']);
 
-    // 객체안에 객체 
+			// 객체안에 객체
 
-    var exam = {math:80, eng:70, kor:90};
-    var kim = {name:"홍길동", exam:exam};
-    console.log(kim.exam.math);
-    console.log(kim["exam"]["math"]);
+			var exam = { math: 80, eng: 70, kor: 90 };
+			var kim = { name: '홍길동', exam: exam };
+			console.log(kim.exam.math);
+			console.log(kim['exam']['math']);
 
-    // 배열안에 객체
-    var arr = [
-      {id : 1, title : "hi", content : "쀅!"},
-      {id : 2, title : "hello", content : "헑!"},
-      {id : 3, title : "bye", content : "힣!"}
-    ];
-    console.log(arr);
-    console.log(arr[0].title);
-    console.log(arr[0].id);
-    console.log(arr[0].content);
+			// 배열안에 객체
+			var arr = [
+				{ id: 1, title: 'hi', content: '쀅!' },
+				{ id: 2, title: 'hello', content: '헑!' },
+				{ id: 3, title: 'bye', content: '힣!' },
+			];
+			console.log(arr);
+			console.log(arr[0].title);
+			console.log(arr[0].id);
+			console.log(arr[0].content);
 
-    console.log("----------------------------------------------");
-    var arr2 = [
-    {
-      name : "홍길동",
-      age : 20,
-      subject : ["자바","JSP","JS"],
-      birth : 20200101
-    },
-    {
-      name : "이순신",
-      age : 30,
-      subject : ["css","html"],
-      birth : 20200202
-    }
-    ];
-    
-    // 반복문으로 전부 출력
-    for(var i = 0 ; i < arr2.length ; i++){
-      for(var j = 0; j < arr2[i].subject.length; j++){
-        console.log("arr2["+i+"].subject["+j+"] = "+arr2[i].subject[j]);
-      }
-    }
+			console.log('----------------------------------------------');
+			var arr2 = [
+				{
+					name: '홍길동',
+					age: 20,
+					subject: ['자바', 'JSP', 'JS'],
+					birth: 20200101,
+				},
+				{
+					name: '이순신',
+					age: 30,
+					subject: ['css', 'html'],
+					birth: 20200202,
+				},
+			];
 
-    for(var i in arr2){
-      for(var j in arr2[i].subject){
-        console.log("arr2["+i+"].subject["+j+"] = "+arr2[i].subject[j]);
-      }
-    }
-    console.log("----------------------------------------------");
-    /*var people = {
+			// 반복문으로 전부 출력
+			for (var i = 0; i < arr2.length; i++) {
+				for (var j = 0; j < arr2[i].subject.length; j++) {
+					console.log('arr2[' + i + '].subject[' + j + '] = ' + arr2[i].subject[j]);
+				}
+			}
+
+			for (var i in arr2) {
+				for (var j in arr2[i].subject) {
+					console.log('arr2[' + i + '].subject[' + j + '] = ' + arr2[i].subject[j]);
+				}
+			}
+			console.log('----------------------------------------------');
+			/*var people = {
       name : "홍길동", 
       age:20, 
       info : function(){
         return "이름 : " + this.name + ", 나이 : " + this.age;   // this키워드 사용시 위의 name 사용가능
       }
     };
-    console.log(people.info())*/arr
+    console.log(people.info())*/ arr;
 
-    // ▼▼▼▼▼▼▼▼▼  함수 형태
+			// ▼▼▼▼▼▼▼▼▼  함수 형태
 
-    function people(name, age){
-      this.name = name;
-      this.age = age;
-      this.info = function() {
-        return "이름 : " + this.name + ", 나이 : " + this.age;
-      }
-    }
-    var people = new people("홍길동", 20);
-    console.log(people);
-    console.log(people.info());
-  </script>
-</body>
+			function people(name, age) {
+				this.name = name;
+				this.age = age;
+				this.info = function () {
+					return '이름 : ' + this.name + ', 나이 : ' + this.age;
+				};
+			}
+
+			var people = new people('홍길동', 20);
+
+			console.log(people);
+			console.log(people.info());
+		</script>
+	</body>
 </html>

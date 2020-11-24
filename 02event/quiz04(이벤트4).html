@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>자바스크립트 카운트</h1>
+  <input type="text" id="num" value=0>
+  <button type="button" onclick="cal(this)">+</button>
+  <button type="button" onclick="cal(this)">-</button>
+
+  <script>
+    var num = document.getElementById("num");
+    function cal(a){
+      console.log(a.innerHTML);
+      if(a.innerHTML === "+"){
+        num.value++; 
+      }else if(a.innerHTML === "-"){
+        if(parseInt(num.value) <= 0){
+          alert("0보다 작아질 수 없습니다.");
+          num.value = 0;
+        }else{
+          num.value = parseInt(num.value) - 1; 
+        }
+      }
+    }
+  </script>
+</body>
+</html>
