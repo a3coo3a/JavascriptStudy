@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 아이디나 비밀번호가 변경될때 예제처럼 처리되도록 구현하세요 : keyup -->
+  <div>
+    <form id="form">
+      아이디 : <input type="text" name="id"><br/>
+      <span class="idMsg"></span><br/>
+      비밀번호 : <input type="password" name="pw"><br/>
+      <span class="pwMsg"></span><br/>
+    </form>
+  </div>
+  <script>
+    var form = document.querySelector("#form");
+    var id = form.querySelector("input[name='id']");
+    var pw = form.querySelector("input[name='pw']");
+    var idMsg = form.querySelector(".idMsg");
+    var pwMsg = form.querySelector(".pwMsg");
+    
+      id.addEventListener("keyup" ,function(){
+        if(id.value.length < 4){
+          id.style.borderColor = "red";
+          idMsg.innerHTML = "4글자 이상입니다."
+        }else{
+          id.style.borderColor = "green";
+          idMsg.innerHTML="";
+        }
+      })
+
+      pw.addEventListener("keyup" ,function(){
+        if(pw.value.length < 8){
+          pw.style.borderColor = "red";
+          pwMsg.innerHTML = "8글자 이상입니다."
+        }else{
+          pw.style.borderColor = "green";
+          pwMsg.innerHTML="";
+        }
+      })
+    
+  </script>
+</body>
+</html>

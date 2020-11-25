@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      text-align: center;
+    }
+    section{
+      width: 60%;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+    section .par{
+      overflow: hidden;
+      border: 1px solid #c9c9c9;
+      padding: 5px;
+    }
+    section img{
+      height: 100%;
+      width: 100%;
+    }
+    section .par .left{
+      padding: 5px;
+      width: 48%;
+      float: left;
+      border: 1px solid #c9c9c9;
+      height: 400px;
+    }
+    section .par .right{
+      height: 400px;
+      width: 250px;
+      padding: 5px;
+      width: 48%;
+      border: 1px solid #c9c9c9;
+      overflow: auto;
+      float: right;
+    }
+    
+  </style>
+</head>
+<body>
+  
+  <header>
+    <h2>style 속성 활용하기</h2>
+    <button type="button" class="dark">어둡게</button>
+    <button type="button" class="light">밝게</button>
+    <hr>
+  </header>
+
+  <section>
+    <div class="outer">
+      <div class="par">
+        <div class="left">
+          <img src="1.jpg">
+        </div>
+        <div class="right">
+          안고, 위하여서, 용감하고 끓는 뛰노는 말이다. <br>
+          군영과 얼마나 피가 힘있다. <br>
+          꽃이 청춘 크고 때에, 풀이 우는 끓는 있으랴? <br>
+          인간의 따뜻한 위하여 산야에 싸인 하는 그들의 듣는다. <br>
+          뼈 피어나는 기관과 새가 있는 있으며, 봄바람이다. <br>
+          청춘의 만천하의 따뜻한 같이, 용감하고 인간에 방황하였으며, <br>
+          아니더면, 그리하였는가?<br>
+
+          있는 아니더면, 이성은 능히 얼마나 것이다. <br>
+          천자만홍이 그것은 새가 그리하였는가? 이상은 풀이 쓸쓸한 못할 것이다.<br> 
+          같으며, 주는 위하여서 그리하였는가? 끝에 때까지 청춘의 어디 그것은 있으며, 그리하였는가?<br> 
+
+          같지 그들에게 것은 구하기 청춘의 그와 지혜는 사막이다.<br> 
+          같이 풀밭에 새가 우리 부패뿐이다. 피어나는 물방아 옷을 위하여,<br> 
+          노래하며 뿐이다. 눈이 관현악이며, 사랑의 타오르고 동산에는 거선의 살았으며, 뿐이다. <br>
+          자신과 무한한 오아이스도 긴지라 황금시대를 천하를 생생하며, 피고 속에서 힘있다.<br> 
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.querySelector(".dark").onclick = function(){
+      document.querySelector("body").style.backgroundColor = "black";
+      document.querySelector("body").style.color = "white";
+    }
+    document.querySelector(".light").onclick = function(){
+      document.querySelector("body").style.backgroundColor = "white";
+      document.querySelector("body").style.color = "black";
+    }
+  </script>
+
+
+</body>
+</html>

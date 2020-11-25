@@ -2,11 +2,13 @@
 
 [11.20 수업내용 정리이동 (゜ ω ゜)=☞](https://www.notion.so/JavaScript-4133c44e7d5a43e5be157bf68d158394)
 
-[2020년 11월 20일](#2020년-11월-20일)
+▶[2020년 11월 20일](#2020년-11월-20일)
 
-[2020년 11월 23일](#2020년-11월-23일)
+▶[2020년 11월 23일](#2020년-11월-23일)
 
-[2020년 11월 24일](#2020년-11월-24일)
+▶[2020년 11월 24일](#2020년-11월-24일)
+
+▶[2020년 11월 25일](#2020년-11월-25일)
 
 # 2020년 11월 20일
 
@@ -38,7 +40,9 @@
 - **객체** (JSON)
   - 함수 형태를 객체 형태로 만들어 이용할 수 있게 사용했었으나, 이제 맵의 형태로 사용
   - 생성자 형태의 사용
-- **JSON 파싱** : JSON.stringify(data);
+- **JSON 파싱**
+  - JSON.stringify(data);
+  - JSON.parse(data)
 
 # 2020년 11월 24일
 
@@ -47,3 +51,36 @@
 - **인라인이벤트**
 - **기본이벤트**
 - **표준이벤트**
+
+# 2020년 11월 25일
+
+### DOM
+
+Document Object Model
+
+문서객체 모델
+
+**Element(태그) 노드 선택**
+
+- getElementById() : object
+- getElementsByName() : list
+- getElementsByClassName() : list
+- getElementsByTagName() : list
+
+**css 선택자를 이용**
+
+- querySelector() : object
+- querySelectorAll() : list
+
+노드를 선택, 속성변경, css속성 변경등을 할 수 있다.
+
+**노드생성추가**
+
+- createElement() : 요소생성
+- createTextNode() : 텍스트 생성
+- appendChild() : 자식 요소 추가
+- innerHTML = : 요소에 문자열 추가
+
+### BOM
+
+Browser Object Model

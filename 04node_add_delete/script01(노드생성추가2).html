@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    window.onload = function(){
+
+      var add = document.getElementById("add");
+      add.onclick = function(){
+        // createElement("태그명") : 엘리먼트 생성
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        var text = document.createTextNode("하고싶은말");  // 문자열생성
+        
+        a.appendChild(text);   // a에다가 text를 넣어라
+        a.href = "https://www.google.com";   //a에다가 href 속성 삽입
+        li.appendChild(a);    // li 에다가 a를 넣어라
+        document.querySelector(".list").appendChild(li);   // list의 자식으로 li를 추가
+      }
+    }
+  </script>
+
+
+  <button type="button" id="add">추가</button>
+  <ul class="list"></ul>
+
+
+</body>
+</html>
