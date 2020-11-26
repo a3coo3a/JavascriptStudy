@@ -10,6 +10,8 @@
 
 ▶[2020년 11월 25일](#2020년-11월-25일)
 
+▶[2020년 11월 26일](#2020년-11월-26일)
+
 # 2020년 11월 20일
 
 - 자바스크립트 수업 첫 시작
@@ -81,6 +83,33 @@ Document Object Model
 - appendChild() : 자식 요소 추가
 - innerHTML = : 요소에 문자열 추가
 
-### BOM
+# 2020년 11월 26일
 
-Browser Object Model
+**list라는 것이 사용할 수 있는 모든것을 보여줌**
+
+console.dir(list);
+
+### 노드삭제
+
+- remove()
+- removeChild()
+
+### 노드삭제를 위한 자식선택
+
+- childNodes : 공백 포함 자식 엘리먼트 선택
+- children : 공백 제외한 순수 자식 엘리먼트 선택
+
+### 형제 노드 선택
+
+- 부모노드
+  - parentElement
+  - parentNode
+- 다음형제노드
+  - nextElementSibling
+  - nextSibling // 텍스트까지 잡아냄 , 공백포함
+- 이전형제노드
+  - previousElementSibling
+  - previousSibling // 텍스트까지 잡아냄 , 공백포함
+- 자식노드
+  - firstElementChild
+  - firstChild // 텍스트까지 잡아냄 , 공백포함

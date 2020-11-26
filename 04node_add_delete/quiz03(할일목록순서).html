@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+ 
+  <h2>아직 삭제는 구현하지 마세요(할일목록만들기)</h2>
+
+  <form class="nameForm">
+    <h3 class="nameTitle"></h3>   <!--숨겨놓을 영역-->
+    <input type="text" placeholder="이름을 입력하세요">
+    <button type="button">확인</button>
+  </form>
+
+  <form class="todoForm">
+    <input type="text" placeholder="할일을 입력하세요">
+    <button type="button">확인</button>
+  </form>
+
+  <ul class="todoList">
+    
+  </ul>
+
+  <script>
+    var nameForm = document.querySelector(".nameForm");
+    var nameInput = nameForm.querySelector("input");
+    var nameButton = nameForm.querySelector("button");
+    var nameTitle = nameForm.querySelector(".nameTitle");
+
+    nameButton.addEventListener("click",regist);  // 이벤트등록
+    function regist() {
+      nameTitle.innerHTML = nameInput.value + "님 안녕하세요";
+      nameButton.style.display = "none";
+      nameInput.style.display = "none";
+    }
+
+    var todoForm = document.querySelector(".todoForm");
+    var todoInput = todoForm.querySelector("input");
+    var todoButton = todoForm.querySelector("button");
+
+    todoButton.addEventListener("click",handleTodo);
+    function handleTodo(){
+      createTodo(todoInput.value);    // 셍리먼트 생성 메서드에 input의 value값 전달
+      todoInput.value = "";  // input값 초기화
+    }
+    function createTodo(text){
+      var ul = document.querySelector(".todoList");
+      // 버튼생성
+      var btn = document.createElement("button");
+      btn.innerHTML = "X";
+      btn.addEventListener("click",deleteTodo);
+      var upBtn = document.createElement("button");
+      upBtn.innerHTML = "↑";
+      upBtn.addEventListener("click",up);
+      var downBtn = document.createElement("button");
+      downBtn.innerHTML = "↓";
+      downBtn.addEventListener("click",down);
+      // li생성
+      var li = document.createElement("li");
+      li.innerHTML = text;
+      // li에 버튼 추가
+      li.appendChild(btn);
+      li.appendChild(upBtn);
+      li.appendChild(downBtn);
+      // li를 ul에 추가
+      ul.appendChild(li);
+    }
+    function deleteTodo(){
+      this.parentElement.remove();
+    }
+    function up(){
+      var todoList = document.querySelector(".todoList");
+      var current = this.parentElement;  // li
+      var prev = current.previousElementSibling;
+      if(prev === null) return;
+      if(confirm("이동하시겠습니까?")){
+        todoList.insertBefore(current, prev);
+
+      }
+    }
+    function down(){
+      var current = this.parentElement;  // li
+      var next = current.nextElementSibling;
+      if(next === null) return;
+      if(confirm("이동하시겠습니까?")){
+        todoList.insertBefore(next, current);
+      }
+    }
+
+    
+  </script>
+
+</body>
+</html>

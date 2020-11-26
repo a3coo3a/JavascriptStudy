@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    window.onload = function(){
+
+      var add = document.getElementById("add");
+      add.onclick = function(){
+        // createElement("태그명") : 엘리먼트 생성
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        var text = document.createTextNode("하고싶은말");  // 문자열생성
+        
+        a.appendChild(text);   // a에다가 text를 넣어라
+        a.href = "https://www.google.com";   //a에다가 href 속성 삽입
+        li.appendChild(a);    // li 에다가 a를 넣어라
+        document.querySelector(".list").appendChild(li);   // list의 자식으로 li를 추가
+      }
+
+      //삭제 이벤트
+      var remove = document.getElementById("remove");
+      remove.onclick = function(){
+        var list = document.querySelector(".list");
+        //list.remove();    // ul까지 통째로 다 지워짐.
+        //console.dir(list);   // list가 사용할 수 있는 것들이 console에 표기됨
+        //console.log(list.childNodes[0]);
+        //console.log(list.childNodes[1]);
+        //console.log(list.childNodes[2]);
+
+        //list.removeChild(자식노드)
+        //list.removeChild(list.childNodes[1]);       // 공백을 포함한 엘리먼트를 자식요소로 선택
+        list.removeChild(list.children[0]);           // 공백을 제거하고 순수한 엘리먼트만을 자식요소로 선택 
+
+      }
+    }
+  </script>
+
+
+  <button type="button" id="add">추가</button>
+  <button type="button" id="remove">삭제</button>
+  <ul class="list">
+  </ul>
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .center {
+      text-align: center;
+    }
+    .content {
+      width: 50%;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 1px solid #777;
+      padding: 5px;
+    }
+    .content .left,
+    .content .right {
+      width: 50%;
+      float: left;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+    .content .inner {
+      border: 1px solid #777;
+      height: 300px;
+    }
+    .content .right .inner {
+      overflow: auto;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    .innerMemo textarea{
+      width: 100%;
+      box-sizing: border-box;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  
+  <header>
+    <div class="center">
+        <h2>style 속성 활용하기</h2>
+        <button type="button" class="dark">어둡게보기</button>
+        <button type="button" class="nameView">이름보기</button>
+        <button type="button" class="memoMode">메모장모드</button>
+      <hr>
+    </div>
+  </header>
+
+  <section>
+    <div class="content">
+
+      <div class="left">
+        <div class="inner">
+          <img src="1.jpg" class="innerImg">
+          <div class="innerMemo">
+            <textarea></textarea>
+            <button type="button">등록하기</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="inner">
+          <p class="innerContent">
+            안고, 위하여서, 용감하고 끓는 뛰노는 말이다. <br>
+            군영과 얼마나 피가 힘있다. <br>
+            꽃이 청춘 크고 때에, 풀이 우는 끓는 있으랴? <br>
+            인간의 따뜻한 위하여 산야에 싸인 하는 그들의 듣는다. <br>
+            뼈 피어나는 기관과 새가 있는 있으며, 봄바람이다. <br>
+            청춘의 만천하의 따뜻한 같이, 용감하고 인간에 방황하였으며, <br>
+            아니더면, 그리하였는가?<br>
+            
+            있는 아니더면, 이성은 능히 얼마나 것이다. <br>
+            천자만홍이 그것은 새가 그리하였는가? 이상은 풀이 쓸쓸한 못할 것이다.<br> 
+            같으며, 주는 위하여서 그리하였는가? 끝에 때까지 청춘의 어디 그것은 있으며, 그리하였는가?<br> 
+            
+            같지 그들에게 것은 구하기 청춘의 그와 지혜는 사막이다.<br> 
+            같이 풀밭에 새가 우리 부패뿐이다. 피어나는 물방아 옷을 위하여,<br> 
+            노래하며 뿐이다. 눈이 관현악이며, 사랑의 타오르고 동산에는 거선의 살았으며, 뿐이다. <br>
+            자신과 무한한 오아이스도 긴지라 황금시대를 천하를 생생하며, 피고 속에서 힘있다.<br> 
+          </p>
+          <p class="innerName">
+            홍길자 <br/>
+            20세<br/>
+            능력단위<br/>
+            Java, Oracle, JSP, CSS, Javascript
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+  var center = document.querySelector(".center");
+  var textColor = document.querySelectorAll("h2, p, p");
+  //console.dir(center.children[2]);
+  center.children[1].onclick = function(){
+    if(center.children[1].className === 'dark'){
+      var dark = center.querySelector(".dark");
+      dark.className = "white";
+      dark.innerHTML = "밝게하기";
+      document.body.style.backgroundColor = "black";
+      textColor[0].style.color = "white";
+      textColor[1].style.color = "white";
+      textColor[2].style.color = "white";
+    }else if(center.children[1].className === 'white'){
+      var white = center.querySelector(".white");
+      white.className = "dark";
+      white.innerHTML = "어둡게하기";
+      document.body.style.backgroundColor = "white";
+      textColor[0].style.color = "black";
+      textColor[1].style.color = "black";
+      textColor[2].style.color = "black";
+    }
+  }
+
+  center.children[2].onclick = function(){
+    if(center.children[2].className === 'nameView'){
+      var nameView = center.querySelector(".nameView");
+      nameView.className = "contentView";
+      nameView.innerHTML = "내용보기";
+      document.querySelector(".innerName").style.display = "block";
+      document.querySelector(".innerContent").style.display = "none";
+    }else if(center.children[2].className === 'contentView'){
+      var contentView = center.querySelector(".contentView");
+      contentView.className = "nameView";
+      contentView.innerHTML = "이름보기";
+      document.querySelector(".innerContent").style.display = "block";
+      document.querySelector(".innerName").style.display = "none";
+    }
+  }
+
+  center.children[3].onclick = function(){
+    if(center.children[3].className === 'memoMode'){
+      var memoMode = center.querySelector(".memoMode");
+      memoMode.className = "imgMode";
+      memoMode.innerHTML = "이미지모드";
+      document.querySelector(".innerImg").style.display = "none";
+      document.querySelector(".innerMemo").style.display = "block";
+    }else if(center.children[3].className === 'imgMode'){
+      var imgMode = center.querySelector(".imgMode");
+      imgMode.className = "memoMode";
+      imgMode.innerHTML = "메모장모드";
+      document.querySelector(".innerMemo").style.display = "none";
+      document.querySelector(".innerImg").style.display = "block";
+    }
+  }
+  </script>
+
+</body>
+</html>
