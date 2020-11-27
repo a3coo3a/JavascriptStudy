@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- setAttribute(), getAttribute(), removeAttribute -->
+
+  <!-- 하나의 폼으로 전송요청을 변경해서 보내는 방법 -->
+  <form method="post" name="forms">
+    <input type="hidden" name="num"><br/>
+    <input type="text" name="title"><br/>
+    <input type="button" value="수정" onclick="change(this)">
+    <input type="button" value="추가" onclick="change(this)">
+  </form>
+  <script>
+    function change(a){
+      //console.log(a.value);
+      //console.log(a.getAttribute("value"));  // 속성명이 value인 값을 얻습니다.
+      if (a.getAttribute("value") === '수정'){
+        //doucment.forms.action = "https://www.naver.com"
+        document.forms.setAttribute("action","https://www.naver.com");   // 위에와 같은 표현
+        document.forms.submit();
+      }else if (a.getAttribute("value") === '추가'){
+        document.forms.setAttribute("action","https://www.google.com");   // 위에와 같은 표현
+        document.forms.submit();
+      }
+    }
+    // form과 body만 이렇게 . 접근이 가능함.
+    document.forms.action = "https://www.naver.com"
+    console.log(document.forms);
+  </script>
+</body>
+</html>

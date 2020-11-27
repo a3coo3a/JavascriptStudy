@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table,
+    table th,
+    table td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      border-spacing: 0;
+      text-align: center;
+      font-weight: bolder;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <thead>
+      <th>번호</th>
+      <th>제목</th>
+      <th>내용</th>
+      <th>삭제</th>
+    </thead>
+    <tbody class="buttonList">
+      <tr>
+        <td>1</td>
+        <td>첫글</td>
+        <td>hi</td>
+        <td><button type="button">삭제</button></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>첫글</td>
+        <td>hi</td>
+        <td><button type="button">삭제</button></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>첫글</td>
+        <td>hi</td>
+        <td><button type="button">삭제</button></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>첫글</td>
+        <td>hi</td>
+        <td><button type="button">삭제</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    // 이벤트 속성 이용
+    //var button = document.querySelectorAll("button");
+    //for(var i = 0; i < button.length;i++){
+    //  button[i].onclick = function (){
+    //    if(event.target.tagName !== 'BUTTON') return;
+    //    event.target.parentElement.parentElement.remove();
+    //  }
+    //}
+
+    // 위임
+    var buttonList = document.querySelector(".buttonList");
+    buttonList.onclick = function(){
+      if(event.target.tagName !== 'BUTTON') return;
+      event.target.parentElement.parentElement.remove();
+    }
+  </script>
+</body>
+</html>

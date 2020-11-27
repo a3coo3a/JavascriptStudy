@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul li {
+      display: inline-block;
+    }
+    ul li img {
+      width: 100px;
+    }
+    div > img {
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>이벤트 위임</h2>
+
+  <div>
+    <ul class="imgList">
+      <li><img src="img/1.jpg" alt="봄"></li>
+      <li><img src="img/2.jpg" alt="여름"></li>
+      <li><img src="img/3.jpg" alt="가을"></li>
+      <li><img src="img/4.jpg" alt="겨울"></li>
+    </ul>
+  </div>
+
+  결과 : 
+  <div class="result"><img src="img/1.jpg" alt="봄"></div>
+
+  <script>
+    //var imgList = document.querySelectorAll("ul li img");
+    //var img = document.querySelector(".result img");
+    //for(var i = 0; i <imgList.length; i++){
+    //  imgList[i].addEventListener("click",handleImg);
+    //}
+    //function handleImg(e){
+    //  img.src = e.target.src;
+    //}
+    var img = document.querySelector(".result img");
+    var imgList = document.querySelector(".imgList");
+    imgList.onclick = function(){
+      if(event.target.tagName !== 'IMG') return;
+      img.src = event.target.src;
+    }
+  </script>
+
+</body>
+</html>

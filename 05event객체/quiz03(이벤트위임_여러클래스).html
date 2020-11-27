@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+    table th,
+    table td{
+      border: 1px solid black;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <table id="testTable">
+    <thead>
+      <th>번호</th>
+      <th>과정명</th>
+      <th>담당교수</th>
+      <th>관리</th>
+    </thead>
+    <tbody class="testList">
+      <tr>
+        <td>1</td>
+        <td>강남응용자바</td>
+        <td>홍길동</td>
+        <td>
+          <button type="button" class="testInfo">시험기본정보</button>
+          <button type="button" class="testInput">시험출제</button>
+          <button type="button" class="testResult">시험결과</button>
+          <button type="button" class="scoreInfo">성적관리</button>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>종로응용자바</td>
+        <td>홍길동</td>
+        <td>
+          <button type="button" class="testInfo">시험기본정보</button>
+          <button type="button" class="testInput">시험출제</button>
+          <button type="button" class="testResult">시험결과</button>
+          <button type="button" class="scoreInfo">성적관리</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    var testTable = document.querySelector("#testTable");
+    var testList = testTable.querySelector(".testList");
+    testList.onclick = function(){
+      if(event.target.tagName !== "BUTTON") return;
+      if(event.target.classList.contains('testInfo')){
+        console.log(event.target);
+        console.log("시험기본정보...");
+      }else if(event.target.classList.contains("testInput")){
+        console.log(event.target);
+        console.log("시험출제..");
+      }else if(event.target.classList.contains("testResult")){
+        console.log(event.target);
+        console.log("시험결과..");
+      }else if(event.target.classList.contains("scoreInfo")){
+        console.log(event.target);
+        console.log("성적관리....");
+      }
+    }
+  </script>
+
+</body>
+</html>

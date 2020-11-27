@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    header img {
+      width:100px;
+    }
+    section img {
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <h2>이벤트 속성을 이용해서 다음을 만들어 보세요 다 만들었다면 위임방식으로 변경하세요</h2>
+
+  <header>
+    <div class="select">
+      <img src="img/1.jpg" alt="봄" class="season">
+      <img src="img/2.jpg" alt="여름" class="season">
+      <img src="img/3.jpg" alt="가을" class="season">
+      <img src="img/4.jpg" alt="겨울" class="season">
+    </div>
+  </header>
+
+  <section>
+    <div>결과:</div>
+    
+      <img src="img/1.jpg" class="result">
+    
+  </section>
+
+  <script>
+    // 이벤트 속성
+    var result = document.querySelector(".result");
+    var season = document.querySelectorAll(".season");
+
+    for(var i = 0; i < season.length; i++){
+      season[i].onclick = function(){
+        result.src = this.src;
+      }
+    }
+    // 위임.
+    //var result = document.querySelector(".result");
+    //var select = document.querySelector(".select");
+    //select.onclick = function(){
+    //  if(event.target.nodeName !== 'IMG') return;
+    //  result.src = event.target.src;
+    //}
+  </script>
+</body>
+</html>
