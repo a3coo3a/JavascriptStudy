@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .tog li{
+      display: inline-block;
+      padding: 10px;
+      border: 1px solid black;
+      width:150px;
+      text-align: center;
+    }
+    .tog-menu{
+      display: none;
+    }
+    .active{
+      display: block ;
+      animation: myfadein 1s ease-in-out;
+    }
+    /* 애니메이션 myfadein */
+    @keyframes myfadein {
+      from {    /* 출발 */
+        opacity: 0;
+      } to {    /* 도착 */
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <ul class="tog">
+      <li data-id="#tog1">메뉴1</li>
+      <li data-id="#tog2">메뉴2</li>
+      <li data-id="#tog3">메뉴3</li>
+    </ul>
+
+    <!-- 메뉴에 따라서 보여줄 영역 -->
+    <div>
+      <div class="tog-menu active" id="tog1">토글메뉴1</div>
+      <div class="tog-menu" id="tog2">토글메뉴2</div>
+      <div class="tog-menu" id="tog3">토글메뉴3</div>
+    </div>
+  </section>
+  <!-- 강사님 -->
+  <script>
+    var tog = document.querySelector(".tog");
+    tog.onclick = function (){
+      //event.preventDefault();  //만약 a 태그 였다면,
+      if(event.target.tagName !== 'LI') return;
+      console.log(event.target);
+      
+      //active가 포함된 태그에서 active를 전부 삭제
+      var togList = document.querySelectorAll(".tog-menu");
+      for(var i = 0; i < togList.length; i++){
+        if(togList[i].classList.contains("active")){ /*클래스중에 active가 포함한다면*/
+          //console.dir(togList[i].classList);
+          togList[i].classList.remove("active");
+        }
+      }
+
+      // 태그의 data-id를 얻어와서 현재 실행되는 대상에 add() 추가
+      var target = event.target.dataset.id;
+      document.querySelector(target).classList.add("active");  // 클래이름
+    }
+
+  </script>
+  <!-- <script>
+    /*
+    이벤트 위임 방식을 이용해서 이벤트를 처리합니다.
+    data-id값을 얻어서 각 아이디에 id에 적합한 태그 class이름에 active를 추가합니다.
+    나머지 tog-menu의 active는 지워줍니다.
+    */
+    var tog = document.querySelector(".tog");
+    tog.onclick = function(){
+      if(event.target.tagName !== 'LI') return;
+      var before = document.querySelector(".active");
+      //console.dir(before)
+      //before.removeClass("active");
+      //before.className = "tog-menu";
+      before.classList.remove("active");
+      
+      var active = document.querySelector(event.target.dataset.id);
+      //active.addClass("active");
+      //active.className = "tog-menu active"
+      active.classList.add("active");
+    }
+  </script> -->
+</body>
+</html>

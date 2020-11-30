@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .main-banner1 {
+      background: linear-gradient(90deg,#0c151c 1.3125rem,transparent 1%) 50%,linear-gradient(#0c151c 1.3125rem,transparent 1%) 50%,#263747;
+      background-size: 1.5rem 1.5rem;
+      padding: 6rem 0;
+      color: #fff;
+      text-align: center;
+
+    }
+    /*선생님*/
+    .main-banner1 img {
+      display: none;
+      animation: topin .5s linear;
+      position: relative;
+    }
+    @keyframes topin{
+      from{
+        opacity: 0;
+        top: -50px;
+      }to{
+        opacity: 1;
+        top: 0px;
+      }
+    }
+    /* .main-banner1 img {
+      display: none;
+      animation: fadein 0.5s ease;  
+      position: relative;
+    }
+    @keyframes fadein{
+      from{
+        opacity: 0;
+        top: -20px;
+        right: -20px;
+      } to {
+        opacity: 1;
+        top: 0px;
+        right: 0px;
+      }
+    }*/ 
+  </style>
+</head>
+<body>
+  <!-- 1. 엘리멘트 생성 구문으로 처리 or display 방식으로 처리 -->
+
+  <div class="main-banner1">
+    <img src="img/1.jpg" width="200px">
+    <img src="img/2.jpg" width="200px">
+    <img src="img/3.jpg" width="200px">
+    <img src="img/4.jpg" width="200px">
+    <img src="img/1.jpg" width="200px">
+    <img src="img/2.jpg" width="200px">
+    <img src="img/3.jpg" width="200px">
+    <img src="img/4.jpg" width="200px">
+    <img src="img/1.jpg" width="200px">
+    <img src="img/2.jpg" width="200px">
+    <img src="img/3.jpg" width="200px">
+    <img src="img/4.jpg" width="200px">
+    <img src="img/1.jpg" width="200px">
+    <img src="img/2.jpg" width="200px">
+    <img src="img/3.jpg" width="200px">
+    <img src="img/4.jpg" width="200px">
+    <img src="img/1.jpg" width="200px">
+    <img src="img/2.jpg" width="200px">
+    <img src="img/3.jpg" width="200px">
+    <img src="img/4.jpg" width="200px">
+  </div>
+  
+  <!-- 선생님 -->
+  <script>
+    var list = document.querySelector(".main-banner1");
+    var index = 0;
+    var stop = null;
+    function changeImg(){
+      list.children[index].style.display = "inline";
+      index++;
+
+      //클리어 인터벌
+      if(index == list.children.length) {
+        clearInterval(stop);
+      }
+    }
+    (function(){
+      stop = setInterval(changeImg,500);
+    })();
+  </script>
+
+  <!-- <script>
+    var mainBanner1 = document.querySelector(".main-banner1");
+    var index = -1;
+    (function(){
+      var stop = setInterval(function(){
+        if(index == 19) return;
+        mainBanner1.children[++index].style.display = "inline"
+        //console.log(1);
+      }, 500); 
+    })();
+
+    if(index == 19) {
+      clearInterval(stop);
+    }
+  </script> -->
+  
+</body>
+</html>
