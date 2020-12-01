@@ -188,15 +188,17 @@ Document Object Model
 
 - appName() : 브라우저의 이름을 얻어 옴
 - geolocation.getCurrentPosition() : 현재 위치 정보를 얻어 옴
-  - ex) navigator.geolocation.getCurrentPosition(function(postion){
-    // 성공시
-    console.log(postion);
-    console.log("위도 : " + postion.coords.latitude);
-    console.log("경도 : " + postion.coords.longitude);
-    },function(){
-    // 실패시
-    alert("위치정보를 얻는데 실패했습니다.");
-    });
+  ```
+   navigator.geolocation.getCurrentPosition(function(postion){
+     // 성공시
+     console.log(postion);
+     console.log("위도 : " + postion.coords.latitude);
+     console.log("경도 : " + postion.coords.longitude);
+   },function(){
+     // 실패시
+     alert("위치정보를 얻는데 실패했습니다.");
+   });
+  ```
 
 **location 객체**
 
