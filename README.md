@@ -186,20 +186,49 @@ Document Object Model
 
 **navigator 객체**
 
+- appName() : 브라우저의 이름을 얻어 옴
+- geolocation.getCurrentPosition() : 현재 위치 정보를 얻어 옴
+  - ex) navigator.geolocation.getCurrentPosition(function(postion){
+    // 성공시
+    console.log(postion);
+    console.log("위도 : " + postion.coords.latitude);
+    console.log("경도 : " + postion.coords.longitude);
+    },function(){
+    // 실패시
+    alert("위치정보를 얻는데 실패했습니다.");
+    });
+
 **location 객체**
+
+- location.href = 주소; -> 페이지 이동
+- location.reload(); -> 새로고침
 
 **history 객체**
 
-- go()
-- back()
--
+- history.go(-1); -> 기록이동
+- history.back(); -> 뒤로가기
+- history.replaceState(저장할데이터 , 바꿀제목 , 바뀐주소 ); -> 새로운 기록추가
+- history.state -> 페이지데이터
 
 ## 쿠키
 
 **쿠키생성**
 
-1.
-2.
-3.
+1. 쿠키에 유지시간 생성
+2. 쿠키에 저장할 문자열 생성 : 형식을 반드시 지켜야 한다.
+   - name=value;expires=Tue, 08 Dec 2020 06:21:39 GMT
+3. document.cookie 에 쿠키를 저장
 
-**쿠키사용**
+**쿠키사용(확인)**
+
+1. 쿠키 찾을 키값 ex)find
+2. `;(공백)` 기준으로 쿠키 문자를 분해
+
+- ex) var cookies = document.cookie.split("; ");
+
+3. search()를 이용해서 값 찾기
+
+- ex)
+  for(var i in cookies){
+  if(cookies[i].search(name) != -1) return true;
+  }
