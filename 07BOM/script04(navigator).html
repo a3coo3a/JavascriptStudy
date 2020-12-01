@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    //console.dir(navigator)   
+    //console.dir(navigator.appName)
+    //console.dir(navigator.userAgent)   // 사용자가 쓰는 브라우저 관련된 내용
+    
+    // callback함수 ? 
+    // 위치정보에 관련된 내용을 실행 시켰을때, 성공에 대한 결과를 돌려주는 약속된 함수
+    // CurrentPosition() - 콜백 함수를 받을 때 첫번째 매개변수에 위치에 대한 정보를 받도록 정의 되어 
+    navigator.geolocation.getCurrentPosition(function(postion){
+      // 시간이 얼마나 걸리지 모르지만, 성공하면 그 결과를 이곳에 넣어줄게
+      console.log(postion);
+      console.log("위도 : " + postion.coords.latitude);
+      console.log("경도 : " + postion.coords.longitude);
+    },function(){
+
+    });
+
+    function success(postion){
+      console.log(postion);
+      console.log("위도 : " + postion.coords.latitude);
+      console.log("경도 : " + postion.coords.longitude);
+    }
+    function fail(){
+      alert("위치정보를 얻는데 실패했습니다.")
+    }
+
+    (function(){
+      navigator.geolocation.getCurrentPosition(success, fail);
+    })();
+  </script>
+</body>
+</html>

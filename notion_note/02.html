@@ -1,0 +1,797 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>JavaScript</title><style>
+  /* webkit printing magic: print all background colors */
+  html {
+    -webkit-print-color-adjust: exact;
+  }
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+  }
+  
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  @media only screen {
+    body {
+      margin: 2em auto;
+      max-width: 900px;
+      color: rgb(55, 53, 47);
+    }
+  }
+  
+  body {
+    line-height: 1.5;
+    white-space: pre-wrap;
+  }
+  
+  a,
+  a.visited {
+    color: inherit;
+    text-decoration: underline;
+  }
+  
+  .pdf-relative-link-path {
+    font-size: 80%;
+    color: #444;
+  }
+  
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0.75em;
+  }
+  
+  h1 {
+    font-size: 1.875rem;
+    margin-top: 1.875rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    margin-top: 1.25rem;
+  }
+  
+  .source {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 1.5em;
+    word-break: break-all;
+  }
+  
+  .callout {
+    border-radius: 3px;
+    padding: 1rem;
+  }
+  
+  figure {
+    margin: 1.25em 0;
+    page-break-inside: avoid;
+  }
+  
+  figcaption {
+    opacity: 0.5;
+    font-size: 85%;
+    margin-top: 0.5em;
+  }
+  
+  mark {
+    background-color: transparent;
+  }
+  
+  .indented {
+    padding-left: 1.5em;
+  }
+  
+  hr {
+    background: transparent;
+    display: block;
+    width: 100%;
+    height: 1px;
+    visibility: visible;
+    border: none;
+    border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+  }
+  
+  img {
+    max-width: 100%;
+  }
+  
+  @media only print {
+    img {
+      max-height: 100vh;
+      object-fit: contain;
+    }
+  }
+  
+  @page {
+    margin: 1in;
+  }
+  
+  .collection-content {
+    font-size: 0.875rem;
+  }
+  
+  .column-list {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .column {
+    padding: 0 1em;
+  }
+  
+  .column:first-child {
+    padding-left: 0;
+  }
+  
+  .column:last-child {
+    padding-right: 0;
+  }
+  
+  .table_of_contents-item {
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.3;
+    padding: 0.125rem;
+  }
+  
+  .table_of_contents-indent-1 {
+    margin-left: 1.5rem;
+  }
+  
+  .table_of_contents-indent-2 {
+    margin-left: 3rem;
+  }
+  
+  .table_of_contents-indent-3 {
+    margin-left: 4.5rem;
+  }
+  
+  .table_of_contents-link {
+    text-decoration: none;
+    opacity: 0.7;
+    border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+  }
+  
+  table,
+  th,
+  td {
+    border: 1px solid rgba(55, 53, 47, 0.09);
+    border-collapse: collapse;
+  }
+  
+  table {
+    border-left: none;
+    border-right: none;
+  }
+  
+  th,
+  td {
+    font-weight: normal;
+    padding: 0.25em 0.5em;
+    line-height: 1.5;
+    min-height: 1.5em;
+    text-align: left;
+  }
+  
+  th {
+    color: rgba(55, 53, 47, 0.6);
+  }
+  
+  ol,
+  ul {
+    margin: 0;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+  }
+  
+  li > ol:first-child,
+  li > ul:first-child {
+    margin-block-start: 0.6em;
+  }
+  
+  ul > li {
+    list-style: disc;
+  }
+  
+  ul.to-do-list {
+    text-indent: -1.7em;
+  }
+  
+  ul.to-do-list > li {
+    list-style: none;
+  }
+  
+  .to-do-children-checked {
+    text-decoration: line-through;
+    opacity: 0.375;
+  }
+  
+  ul.toggle > li {
+    list-style: none;
+  }
+  
+  ul {
+    padding-inline-start: 1.7em;
+  }
+  
+  ul > li {
+    padding-left: 0.1em;
+  }
+  
+  ol {
+    padding-inline-start: 1.6em;
+  }
+  
+  ol > li {
+    padding-left: 0.2em;
+  }
+  
+  .mono ol {
+    padding-inline-start: 2em;
+  }
+  
+  .mono ol > li {
+    text-indent: -0.4em;
+  }
+  
+  .toggle {
+    padding-inline-start: 0em;
+    list-style-type: none;
+  }
+  
+  /* Indent toggle children */
+  .toggle > li > details {
+    padding-left: 1.7em;
+  }
+  
+  .toggle > li > details > summary {
+    margin-left: -1.1em;
+  }
+  
+  .selected-value {
+    display: inline-block;
+    padding: 0 0.5em;
+    background: rgba(206, 205, 202, 0.5);
+    border-radius: 3px;
+    margin-right: 0.5em;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    white-space: nowrap;
+  }
+  
+  .collection-title {
+    display: inline-block;
+    margin-right: 1em;
+  }
+  
+  time {
+    opacity: 0.5;
+  }
+  
+  .icon {
+    display: inline-block;
+    max-width: 1.2em;
+    max-height: 1.2em;
+    text-decoration: none;
+    vertical-align: text-bottom;
+    margin-right: 0.5em;
+  }
+  
+  img.icon {
+    border-radius: 3px;
+  }
+  
+  .user-icon {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 100%;
+    margin-right: 0.5rem;
+  }
+  
+  .user-icon-inner {
+    font-size: 0.8em;
+  }
+  
+  .text-icon {
+    border: 1px solid #000;
+    text-align: center;
+  }
+  
+  .page-cover-image {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 30vh;
+  }
+  
+  .page-header-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .page-header-icon-with-cover {
+    margin-top: -0.72em;
+    margin-left: 0.07em;
+  }
+  
+  .page-header-icon img {
+    border-radius: 3px;
+  }
+  
+  .link-to-page {
+    margin: 1em 0;
+    padding: 0;
+    border: none;
+    font-weight: 500;
+  }
+  
+  p > .user {
+    opacity: 0.5;
+  }
+  
+  td > .user,
+  td > time {
+    white-space: nowrap;
+  }
+  
+  input[type="checkbox"] {
+    transform: scale(1.5);
+    margin-right: 0.6em;
+    vertical-align: middle;
+  }
+  
+  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  .image {
+    border: none;
+    margin: 1.5em 0;
+    padding: 0;
+    border-radius: 0;
+    text-align: center;
+  }
+  
+  .code,
+  code {
+    background: rgba(135, 131, 120, 0.15);
+    border-radius: 3px;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 85%;
+    tab-size: 2;
+  }
+  
+  code {
+    color: #eb5757;
+  }
+  
+  .code {
+    padding: 1.5em 1em;
+  }
+  
+  .code-wrap {
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  
+  .code > code {
+    background: none;
+    padding: 0;
+    font-size: 100%;
+    color: inherit;
+  }
+  
+  blockquote {
+    font-size: 1.25em;
+    margin: 1em 0;
+    padding-left: 1em;
+    border-left: 3px solid rgb(55, 53, 47);
+  }
+  
+  .bookmark {
+    text-decoration: none;
+    max-height: 8em;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+  }
+  
+  .bookmark-title {
+    font-size: 0.85em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 1.75em;
+    white-space: nowrap;
+  }
+  
+  .bookmark-text {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .bookmark-info {
+    flex: 4 1 180px;
+    padding: 12px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .bookmark-image {
+    width: 33%;
+    flex: 1 1 180px;
+    display: block;
+    position: relative;
+    object-fit: cover;
+    border-radius: 1px;
+  }
+  
+  .bookmark-description {
+    color: rgba(55, 53, 47, 0.6);
+    font-size: 0.75em;
+    overflow: hidden;
+    max-height: 4.5em;
+    word-break: break-word;
+  }
+  
+  .bookmark-href {
+    font-size: 0.75em;
+    margin-top: 0.25em;
+  }
+  
+  .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+  .code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+  .serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+  .mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+  .pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+  
+  .pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+  
+  .pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+  
+  .pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+  
+  .highlight-default {
+  }
+  .highlight-gray {
+    color: rgb(155,154,151);
+  }
+  .highlight-brown {
+    color: rgb(100,71,58);
+  }
+  .highlight-orange {
+    color: rgb(217,115,13);
+  }
+  .highlight-yellow {
+    color: rgb(223,171,1);
+  }
+  .highlight-teal {
+    color: rgb(15,123,108);
+  }
+  .highlight-blue {
+    color: rgb(11,110,153);
+  }
+  .highlight-purple {
+    color: rgb(105,64,165);
+  }
+  .highlight-pink {
+    color: rgb(173,26,114);
+  }
+  .highlight-red {
+    color: rgb(224,62,62);
+  }
+  .highlight-gray_background {
+    background: rgb(235,236,237);
+  }
+  .highlight-brown_background {
+    background: rgb(233,229,227);
+  }
+  .highlight-orange_background {
+    background: rgb(250,235,221);
+  }
+  .highlight-yellow_background {
+    background: rgb(251,243,219);
+  }
+  .highlight-teal_background {
+    background: rgb(221,237,234);
+  }
+  .highlight-blue_background {
+    background: rgb(221,235,241);
+  }
+  .highlight-purple_background {
+    background: rgb(234,228,242);
+  }
+  .highlight-pink_background {
+    background: rgb(244,223,235);
+  }
+  .highlight-red_background {
+    background: rgb(251,228,228);
+  }
+  .block-color-default {
+    color: inherit;
+    fill: inherit;
+  }
+  .block-color-gray {
+    color: rgba(55, 53, 47, 0.6);
+    fill: rgba(55, 53, 47, 0.6);
+  }
+  .block-color-brown {
+    color: rgb(100,71,58);
+    fill: rgb(100,71,58);
+  }
+  .block-color-orange {
+    color: rgb(217,115,13);
+    fill: rgb(217,115,13);
+  }
+  .block-color-yellow {
+    color: rgb(223,171,1);
+    fill: rgb(223,171,1);
+  }
+  .block-color-teal {
+    color: rgb(15,123,108);
+    fill: rgb(15,123,108);
+  }
+  .block-color-blue {
+    color: rgb(11,110,153);
+    fill: rgb(11,110,153);
+  }
+  .block-color-purple {
+    color: rgb(105,64,165);
+    fill: rgb(105,64,165);
+  }
+  .block-color-pink {
+    color: rgb(173,26,114);
+    fill: rgb(173,26,114);
+  }
+  .block-color-red {
+    color: rgb(224,62,62);
+    fill: rgb(224,62,62);
+  }
+  .block-color-gray_background {
+    background: rgb(235,236,237);
+  }
+  .block-color-brown_background {
+    background: rgb(233,229,227);
+  }
+  .block-color-orange_background {
+    background: rgb(250,235,221);
+  }
+  .block-color-yellow_background {
+    background: rgb(251,243,219);
+  }
+  .block-color-teal_background {
+    background: rgb(221,237,234);
+  }
+  .block-color-blue_background {
+    background: rgb(221,235,241);
+  }
+  .block-color-purple_background {
+    background: rgb(234,228,242);
+  }
+  .block-color-pink_background {
+    background: rgb(244,223,235);
+  }
+  .block-color-red_background {
+    background: rgb(251,228,228);
+  }
+  .select-value-color-default { background-color: rgba(206,205,202,0.5); }
+  .select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+  .select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+  .select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+  .select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+  .select-value-color-green { background-color: rgba(0,135,107,0.2); }
+  .select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+  .select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+  .select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+  .select-value-color-red { background-color: rgba(255,0,26,0.2); }
+  
+  .checkbox {
+    display: inline-flex;
+    vertical-align: text-bottom;
+    width: 16;
+    height: 16;
+    background-size: 16px;
+    margin-left: 2px;
+    margin-right: 5px;
+  }
+  
+  .checkbox-on {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+  }
+  
+  .checkbox-off {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+  }
+    
+  </style></head><body><article id="4133c44e-7d5a-43e5-be15-7bf68d158394" class="page sans"><header><h1 class="page-title">JavaScript</h1></header><div class="page-body"><nav id="f8936907-3515-484d-8d21-ae8aed57ef54" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#32326bcf-9f0c-448a-a3fa-17f89c7512fb">사용방법</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3903b2e1-9f75-42b3-b975-f71df15f11d6">HTML 문서 내에 사용</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d87f6ca6-833a-4153-b956-d8da55b654eb">외부 파일로 사용되는 경우 (*.js)</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cb4552ea-464e-4a37-9890-1ffc36c507e8">구문 및 주석</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8d178296-9cc8-4f42-be9f-fce63fa5b71a">구문</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dee61461-ef4d-4d34-9798-8f1e97699300">주석</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0746057d-2404-4f21-aba5-f2aa90d4834f">변수</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fecacc63-0d66-4766-bc7e-68b5fed843e6">변수 선언</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6e62efcb-41c6-4b78-b3c6-ebe5dc82ef57">var 키워드</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e5dd0eff-81ab-44bb-a99d-cef6ee853ba8">let 키워드</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fb6b37cd-beee-40e5-95e1-9fa286888669">출력</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#12a7a419-ebb4-4398-b9b7-cc2473d991b9">console.log()</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1623b704-9fd5-475c-8a16-925535e787bc">document.write()</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ab18fcc2-bff7-46e4-ab82-f1f6227c1901">alert()</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3bf7c6d3-1370-43cb-83e6-a6c773f8a3a0">confirm()</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#be52217f-4d27-42e3-9ac2-0798608f61ff">데이터 타입</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7cbf0941-3ea7-4180-b226-6c5ecbb9a751">기본타입</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4b3c1359-c4e0-4f57-93af-880c3b83db97">숫자 (number)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#88e5d882-7dc9-4119-ba75-f39beff7379e">문자열 (string)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#aac65b9c-e370-440e-84f7-517385118bb0">불린 (boolean)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b9f43b50-dc76-4d52-be91-840fe26630d4">undefined</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7b8cd1d0-f563-49cc-b568-108426bfc719">null</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cbe0e2f3-4fa9-49c8-b4d1-0ca592fd5448">참조타입</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5a579263-03b2-4207-b9a3-0162259e69d9">배열</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7a6e6b54-e539-459f-a7d7-3bc016102a0b">객체</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5ab3d7d0-eb47-4477-b816-795e3f78d431">typeof  : 데이터 타입 확인</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7d786d82-49c0-4dba-a309-8268d42df9ef">연산자</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cd7598b9-bca5-42f0-8005-f4f630331ce5">산술연산자</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#24b3d210-fc9c-4ca2-9054-4afca2fa5492">비교연산자</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#80c5c79f-c76e-4ab2-9f80-d53b541ed1be">대입연산자</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#066289c8-caa5-4ac0-a3e5-f3061cdd3f36">논리연산자</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e5b167b4-93bd-477b-b8f2-e95050d482b5">삼항연산자</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#28f049a8-9b9d-4c03-bf91-00d9ada814de">배열</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1fd4213a-ee1e-4a6d-9f1d-f641ab8becca">배열의 선언, 생성</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a3c96663-0988-4a97-8ed8-6754824125dd">기본형태</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5ec5f0fe-d7fe-4c36-bff8-c744d72609eb">서로 다른 타입 선언</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#bda1473a-6f34-4a0a-bda3-e8e5ef1b4962">객체 생성 선언</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8f643537-2c78-4fd0-ad23-b23bde4737d7">배열의 사용</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#58239d4f-f0fe-495f-bbe9-d073ede43295">호출</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8da6c08d-a967-48d1-8331-73b7804e9c44">length() - 배열의 길이</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1a68f676-12de-48b5-8cad-219a1d9b6008">push() - 마지막에 값 추가</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1829b9f5-de50-41fd-8c0c-af86b247f078">pop() - 마지막에 값 제거</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#363c1964-0d52-47d8-b890-18248ec6f01b">unshift() - 앞에서 값 추가</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20bc5306-cc8c-495e-bd91-e151a0f1c132">shift() - 앞에서 값 제거</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c5fc2119-1c65-44d4-a61e-e671b6e9d01a">splice() - 배열의 중간에 추가, 삭제</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#94a7200e-797c-4208-b558-cb9e49e7af72">sort() - 정렬</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#002dfedc-aef5-44b6-9051-90e7ea941b49">reverse() - 역정렬</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#97a0ae4d-b3dc-45f6-b3bd-daf47dae9e6e">indexof() - 탐색</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#612f8353-23b5-44d3-ac2e-d814e7f7a79d">조건문</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fbf7f982-d8be-4818-a40f-2848ca53a2a5">if esle</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#fc93bfe4-a4e9-4853-bf4d-a65813131c4a">중첩if</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ae75552a-236a-4cfb-a973-b08e0890f001">switch</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f10c3b01-f7c9-4e6a-a1c5-f9dbbb155ed1">반복문</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#66ea8d02-ea3f-4698-9ca6-80e44fbb5a3f">while / do while / for</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#39ce78e3-4371-4f17-8eb4-4ce0dbc18a44">for in</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ec9432e5-b66d-4d82-8fce-8bc0a84a2050">탈출문</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#40826dc2-31ac-4d9d-b494-54efd88448c8">break / continue</a></div></nav><p id="43888184-1bef-42f5-801d-0e7cbf476a6e" class="">
+  </p><ul id="f1c8b4ce-1516-4d55-ae40-ed31c0a3bfb1" class="bulleted-list"><li>프로토타입 기반의 <strong>객체지향 언어 </strong>이다</li></ul><ul id="d8465941-9dd6-4f19-abc3-6857b2809b76" class="bulleted-list"><li>프로그램 코드가 직접 html문서에 삽입되어, 브라우저에서 html파일을 읽을 때 같이 해석 되고 실행됨.</li></ul><ul id="99dbcc61-1569-4102-8d7d-f709a17f73e3" class="bulleted-list"><li>클라이언트에서만 실행되기 때문에 정보를 서버에 보낼 필요 없이 처리 할 수 있다.</li></ul><ul id="c0ab6f03-6c53-4917-8756-30f33720a6b2" class="bulleted-list"><li>타입체크가 철저하지 않다</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9e6cffd9-957c-44d5-874c-d9d176c26514"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>스크립트 언어란?</strong>
+  어플리케이션이 실행되는 동안 라인 단위로 해석(인터프리터)되어 실행되는 언어.
+  별도 컴파일 과정이 없다.
+  HTML문서내에서는 스크립트 언어는 <code>&lt;script&gt;</code> 와 <code>&lt;/script&gt;</code>사이에 작성</div></figure><h1 id="32326bcf-9f0c-448a-a3fa-17f89c7512fb" class="">사용방법</h1><h2 id="3903b2e1-9f75-42b3-b975-f71df15f11d6" class="">HTML 문서 내에 사용</h2><p id="a1b45f5b-29ec-4547-b15f-640c4b74398b" class="">body안에 내용 삽입</p><pre id="282000c1-c115-4a15-88fa-5390a2f8556c" class="code"><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    내용
+  &lt;/script&gt;
+  
+  // HTML5에서는 type=&quot;text/javascript&quot; 생략가능!</code></pre><h2 id="d87f6ca6-833a-4153-b956-d8da55b654eb" class="">외부 파일로 사용되는 경우 (*.js)</h2><p id="cc31a3d6-c535-460d-a54d-93709b1d350b" class="">확장자 : .js</p><p id="52f55e67-2e04-4f69-ad0e-4d4823e79c77" class=""><code>&lt;body&gt;</code> 태그 부분이든 기능을 구현할 곳에 삽입</p><pre id="96d7d877-bce9-46b0-a1d8-515778c77970" class="code"><code>&lt;script type=&quot;text/javascript&quot; src=&quot;자바스크립트파일명.js&quot;&gt;&lt;/script&gt;</code></pre><h1 id="cb4552ea-464e-4a37-9890-1ffc36c507e8" class="">구문 및 주석</h1><h3 id="8d178296-9cc8-4f42-be9f-fce63fa5b71a" class="">구문</h3><p id="2b0de2c3-ed98-4716-8a76-f5363c0d4a19" class="">문장 끝에 세미콜론(;)을 입력한다.</p><p id="41b79162-88f0-437a-8140-7d4440350de3" class="">구문사이를 구분하기 위해 사용.</p><p id="8ae00bb2-a9d8-48ac-a504-8ac302d0bc8a" class="">생략해도 무관하나, 오류 방지를 위해 사용을 권장한다.</p><h3 id="dee61461-ef4d-4d34-9798-8f1e97699300" class="">주석</h3><p id="97aada4f-46c6-4b8a-9843-044b4769b4e3" class=""><code>//</code> : 한 줄 주석 처리. 프로그램 코드 끝에 사용</p><p id="92c8140c-7108-4b33-8d5e-3a2b529f8f75" class=""><code>/*내용*/</code> : 한 줄 이상의 주석 처리</p><hr id="6c874ae5-8034-451a-aaaf-3ca69aa0b258"/><h1 id="0746057d-2404-4f21-aba5-f2aa90d4834f" class="">변수</h1><h2 id="fecacc63-0d66-4766-bc7e-68b5fed843e6" class="">변수 선언</h2><h3 id="6e62efcb-41c6-4b78-b3c6-ebe5dc82ef57" class="">var 키워드</h3><p id="4b2d8f00-de32-410f-af16-0b6bee3f6566" class="">자바스크립트에서 변수의 스코프(scope)는 코드의 블록({})이 아닌 함수 단위</p><pre id="edf9efaf-5a29-460b-9ee9-b4dbd0f2c25d" class="code"><code>var num = 10;
+  var num = 20;
+  // 에러 없음. 
+  console.log(num);     // 결과 값 : 20</code></pre><h3 id="e5dd0eff-81ab-44bb-a99d-cef6ee853ba8" class="">let 키워드</h3><p id="dd12bae5-b2cd-4e0f-9dcf-1bcc87e2f28d" class="">ES6에 추가된 변수</p><p id="c0959a0b-00b0-42e3-ab3f-a398d8afacd9" class="">var는 동일 변수의 중복을 허용하지만, let은 중복 변수의 선언을 허용하지 않음</p><pre id="1ef56a6c-fbfb-4fa6-bd7f-12ccc0004618" class="code"><code>let num = 10;
+  let num = 20;
+  // 중복 변수 선언을 허용하지 않으므로 에러 발생</code></pre><hr id="92dd1a6b-32c9-4927-b766-12ce2d812002"/><h1 id="fb6b37cd-beee-40e5-95e1-9fa286888669" class="">출력</h1><p id="83b10a3f-a23c-4672-8336-a85f11cde5a1" class="">문법이 틀릴경우 화면상에 표기되지 않고 브라우저를 통해 확인해야함.</p><p id="d554c6e5-0147-4012-9ac8-c17a33ea5793" class=""><code>F12</code> 를 눌러 개발자 도구를 켜서 확인해야 함. (콘솔 결과도 동일하게 확인)</p><h2 id="12a7a419-ebb4-4398-b9b7-cc2473d991b9" class="">console.log()</h2><pre id="7b38e70a-45ba-44b7-afde-643f6f41b7cb" class="code"><code>// 1. console.log()
+  console.log(&#x27;브라우저 콘솔창 출력&#x27;);		</code></pre><figure id="b6d26017-626a-43ee-b520-f32cf28b1f0a" class="image"><a href="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled.png"><img style="width:510px" src="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled.png"/></a></figure><h2 id="1623b704-9fd5-475c-8a16-925535e787bc" class="">document.write()</h2><pre id="e970b512-f8b5-4a38-a4ee-0156a2f062ea" class="code"><code>//2. document.write()
+  document.write(&#x27;브라우저 출력&#x27;);</code></pre><figure id="ba2c6e2f-6d22-49aa-b17e-b1bcb836ef5a" class="image"><a href="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%201.png"><img style="width:576px" src="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%201.png"/></a></figure><h2 id="ab18fcc2-bff7-46e4-ab82-f1f6227c1901" class="">alert()</h2><pre id="8e138acd-bd94-4f8a-9a7e-73a64526c96f" class="code"><code>//3. alert()
+  alert(&#x27;경고창출력&#x27;);</code></pre><figure id="23f6eb6d-382c-4f0e-8b26-122dab25d58f" class="image"><a href="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%202.png"><img style="width:458px" src="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%202.png"/></a></figure><h2 id="3bf7c6d3-1370-43cb-83e6-a6c773f8a3a0" class="">confirm()</h2><pre id="903125b4-b88f-4b37-aba6-3ded8cdee77e" class="code"><code>//4. confirm()
+  confirm(&#x27;확인창출력&#x27;);</code></pre><figure id="7838216d-6e34-44e4-9d03-a5af8fe25ffb" class="image"><a href="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%203.png"><img style="width:455px" src="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%203.png"/></a></figure><hr id="53bbc284-4844-4b4d-a525-96367a0e71d3"/><h1 id="be52217f-4d27-42e3-9ac2-0798608f61ff" class="">데이터 타입</h1><h2 id="7cbf0941-3ea7-4180-b226-6c5ecbb9a751" class="">기본타입</h2><p id="2502b173-027f-4f23-8b99-16ad0f877a5f" class="">숫자는 개발자모드(F12) 에서 파란색으로 표기된다.</p><pre id="4e0f5dbb-6540-40b4-b2f5-74452792a956" class="code"><code>var num1 = &quot;10&quot;; //문자
+  var num2 = &#x27;10&#x27;; //문자
+  var num3 = 10; //숫자
+  
+  num1 = &quot;20&quot;;/* 새로만든다 생각하면됨. */
+  num2 = &#x27;20&#x27;;
+  num3 = &quot;30&quot;;
+  
+  console.log(num1);   //20
+  console.log(num2);   //20
+  console.log(num3);   //30
+  
+  console.log(num1 + num2);    //2020
+  console.log(40 + num1);     //4020
+  
+  var result = num1 + num2 + num3 + 100;    
+  console.log(result);     //202030100</code></pre><h3 id="4b3c1359-c4e0-4f57-93af-880c3b83db97" class="">숫자 (number)</h3><p id="e5ebcb67-0765-42a1-ba06-f21e0e27aa65" class="">정수, 실수 구분 없이 사용</p><pre id="320eb061-4913-4a1e-8a52-d1377f712b98" class="code"><code>var i1 = 10;
+  var i2 = 20;
+  var i3 = i1 + i2;
+  console.log(i3);    //30</code></pre><h3 id="88e5d882-7dc9-4119-ba75-f39beff7379e" class="">문자열 (string)</h3><p id="7c3a34a3-5b03-4484-ba19-2755a727adc8" class="">문자, 문자열 구분 없이 사용</p><p id="b42ffade-023c-4211-8850-fe6e49d36f02" class=""><code>&quot; &quot;</code> or <code>&#x27; &#x27;</code> 로 묶어서 사용</p><pre id="5651fa2a-1a7f-4285-86a2-0f3fa54f7165" class="code"><code>var s1 = &quot;나는 &quot;;
+  var s2 = &#x27;너에게 &#x27;;
+  var s3 = &quot;&#x27;안녕!&#x27; 이라고 말했다&quot;;
+  console.log(s1 + s2 + s3);      
+  // 결과 : 나는 너에게 &#x27;안녕!&#x27; 이라고 말했다</code></pre><h3 id="aac65b9c-e370-440e-84f7-517385118bb0" class="">불린 (boolean)</h3><p id="f11e2fe7-b096-485a-acd0-38b24d4ab81f" class=""><code>false</code> : 0, null, &quot;&quot;(빈문자열), false, undefined, NaN</p><p id="f2495c77-7d17-4467-a530-29ce6172ecbe" class=""><code>true</code>   : false 외의 값</p><pre id="887dbc05-6201-4143-a8ad-96f27e11c1d3" class="code"><code>var boolean1 = true;
+  var boolean2 = false;
+  console.log(boolean1);   //true
+  console.log(boolean2);   //false</code></pre><h3 id="b9f43b50-dc76-4d52-be91-840fe26630d4" class="">undefined</h3><p id="a79ddaa0-0869-4add-b02f-d913b0009986" class="">변수는 선언 하였으나 초기화를 하지 않은 경우 자동 저장</p><p id="8399629c-be20-4657-b275-7c6dc646c933" class="">반환값</p><ul id="61ffe176-bfd5-4b7d-ab9a-e0099c5679de" class="bulleted-list"><li>boolean : false</li></ul><ul id="d5c36bd2-6fdf-4722-9670-844be332440b" class="bulleted-list"><li>number : NaN</li></ul><ul id="7c9c16cc-6c6c-4109-a777-7b2d93cc330e" class="bulleted-list"><li>string : &quot;undefined&quot;</li></ul><pre id="c5ef4af7-78aa-4a4c-86a5-05fdb4e4de25" class="code"><code>var nu;
+  console.log(nu);    //undefined</code></pre><h3 id="7b8cd1d0-f563-49cc-b568-108426bfc719" class="">null</h3><p id="64e3ce31-6dd1-452b-b294-5c28af6405d7" class="">값은 저장했으나 존재하지 않을 때 나타냄</p><pre id="3724f040-0b4b-45ff-a154-537812e0abc1" class="code"><code>var tag = document.querySelector(&quot;li&quot;);
+  console.log(tag);   //null</code></pre><h2 id="cbe0e2f3-4fa9-49c8-b4d1-0ca592fd5448" class="">참조타입</h2><p id="bf7ca315-9e05-4a8e-a53b-e830cdb27abd" class="">추가 별도 설명 예정</p><h3 id="5a579263-03b2-4207-b9a3-0162259e69d9" class="">배열</h3><p id="3bfec942-19e3-4324-ba6b-1479d579b578" class=""><code>[ ]</code> 로 사용</p><h3 id="7a6e6b54-e539-459f-a7d7-3bc016102a0b" class="">객체</h3><p id="b3c1dbc7-2aa4-487b-8131-f2374c64cbe2" class=""><code>{ }</code> 로 사용</p><p id="8fe0bed4-4117-4646-8094-e3264cbd4822" class="">
+  </p><h2 id="5ab3d7d0-eb47-4477-b816-795e3f78d431" class="">typeof  : 데이터 타입 확인</h2><pre id="36f787b1-e89f-4950-b767-37be41d6b9b9" class="code"><code>console.log(typeof i1);          //number
+  console.log(typeof s1);          //string
+  console.log(typeof boolean1);    //boolean
+  console.log(typeof un);          //undefined
+  console.log(typeof tag);         //object</code></pre><p id="7c9f58f6-878c-4138-b23d-a3ca5e82ba0a" class="">
+  </p><hr id="713216f7-fa77-45bf-acd2-3d1884de7154"/><h1 id="7d786d82-49c0-4dba-a309-8268d42df9ef" class="">연산자</h1><p id="e503c18e-5f8e-4374-98b2-b2fe97bc0438" class="">기본적으로 자바와 동일 하게 사용됨.</p><p id="5b8166d1-9cdd-449f-a1e3-59a10f2192e7" class="">단, 비교 연산자에 다른 부분이 있음. </p><h2 id="cd7598b9-bca5-42f0-8005-f4f630331ce5" class="">산술연산자</h2><p id="7bf5998b-d199-4c60-94d6-644232901ada" class=""><code>+</code>,   <code>-</code>,   <code>*</code>,  <code>%</code>,   <code>++</code>,   <code>--</code> </p><h2 id="24b3d210-fc9c-4ca2-9054-4afca2fa5492" class="">비교연산자</h2><p id="69e7f546-fa7c-4ae4-90b5-002cfdea8310" class="">동일한 부분</p><p id="1c26fae9-f98a-415a-a27e-49e9f4442637" class=""><code>&lt;</code>,  <code>&gt;</code>,  <code>&lt;=</code>,  <code>&gt;=</code> </p><p id="472fd07b-f78a-4bdd-8f23-7c24667509d4" class="">다른 부분</p><p id="9ef43d4a-4252-458c-a8df-b22dd73c51cf" class=""><code>==</code>,  <code>!=</code> : 값의 비교</p><p id="9cfece2e-0a92-4031-af08-e7fb6f8cefa3" class=""><code>===</code>, <code>!==</code> : 값 + 데이터 타입 비교</p><ul id="7d4552ee-5130-4b7a-a4e1-ba389d0dd3ef" class="bulleted-list"><li>JS에서 비교 연산자를 쓸때 3개짜리를 쓰는것을 좀 더 권고하고 있다.</li></ul><pre id="a666d045-a749-4e51-a7b4-398fc391ac70" class="code"><code>var num1 = &quot;10&quot;;
+  var num2 = 10;
+  
+  console.log(num1 == num2);  /* true - 값만 비교 */
+  console.log(num1 === num2); /* false - 값과 데이터 타입까지 동일한지 비교 */
+  
+  console.log(num1 != num2); /* false - 값 그 자체를 비교하기 때문에 */
+  console.log(num1 !== num2); /* true - 값은 같지만 데이터 타입이 다르기 때문에  */</code></pre><pre id="39a0aabc-fe13-4ec0-b396-c9484ae7079a" class="code"><code>var a;  /* undefined */
+  var b = null;  /* null */
+  
+  console.log(a, b, a == b, a === b, typeof a, typeof b);  
+  /* 둘다 없는 값이므로 == 는 true
+     둘의 데이터 타입은 undefined, object로 다르기 때문에 false */
+  
+  console.log(a != b, a !== b);
+  /* false - 없는 것으로 값이 같기에
+     true - 값은 같지만 데이터 타입이 다른것이 맞기에 */</code></pre><h2 id="80c5c79f-c76e-4ab2-9f80-d53b541ed1be" class="">대입연산자</h2><p id="cb345edb-a67c-4789-a425-7884403649ce" class=""><code>=</code>, <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>%=</code>, <code>/=</code></p><h2 id="066289c8-caa5-4ac0-a3e5-f3061cdd3f36" class="">논리연산자</h2><p id="cfaab871-1000-4d06-b24a-d24baf9e3a60" class=""><code>!</code>, <code>&amp;&amp;</code>, <code>||</code>, <code>&amp;</code>, <code>|</code></p><h2 id="e5b167b4-93bd-477b-b8f2-e95050d482b5" class="">삼항연산자</h2><p id="58a75746-98ad-4f47-92c8-6a35df1753e2" class="">조건식 ? 실행문1 : 실행문2</p><hr id="f5ae6d5f-b9e0-43d7-8a6e-876d493ecfb4"/><h1 id="28f049a8-9b9d-4c03-bf91-00d9ada814de" class="">배열</h1><p id="63e0c48c-1e87-4fe0-813c-093d8476d948" class="">일반적으로 자바의 리스트와 비슷한 형태 - 크기가 자유롭게 늘고 줄어듬</p><h2 id="1fd4213a-ee1e-4a6d-9f1d-f641ab8becca" class="">배열의 선언, 생성</h2><h3 id="a3c96663-0988-4a97-8ed8-6754824125dd" class="">기본형태</h3><pre id="9703ffd1-6e92-46a7-8130-a5f16c345fe5" class="code"><code>var arr = [];       // 빈배열
+  var arr = [1,2,3];  // 배열형태
+  var arr2 = [&quot;안녕&quot;,&quot;헬로&quot;,&quot;니하오&quot;];     // 문자형태
+  </code></pre><h3 id="5ec5f0fe-d7fe-4c36-bff8-c744d72609eb" class="">서로 다른 타입 선언</h3><pre id="79997c4c-94e1-4617-b728-13fca0a76bfa" class="code"><code>var arr3 = [1,2,3,4,5,&quot;hello&quot;];    //가능</code></pre><h3 id="bda1473a-6f34-4a0a-bda3-e8e5ef1b4962" class="">객체 생성 선언</h3><pre id="09599a75-53b5-4c2f-8323-cc1d71657d48" class="code"><code>var arr1 = new Array();    // var arr = []; 와 같은 의미
+  
+  // 크기가 10인 빈공간의 배열
+  var arr2 = new Array(10);
+  
+  // 생성과동시에 초기화
+  var arr3 = new Array(&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;,&#x27;d&#x27;,&#x27;e&#x27;);</code></pre><h2 id="8f643537-2c78-4fd0-ad23-b23bde4737d7" class="">배열의 사용</h2><h3 id="58239d4f-f0fe-495f-bbe9-d073ede43295" class="">호출</h3><pre id="662abc57-f092-4982-ab20-bfe7ccbea522" class="code"><code>var arr = [1,2,3];
+  console.log(arr) </code></pre><figure id="f1553216-10da-494c-95e3-f645e61ac25c" class="image"><a href="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%204.png"><img style="width:210px" src="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%204.png"/></a></figure><pre id="65671d2c-35a7-4127-a73d-aa36ed752f2e" class="code"><code>arr[0] = 10;
+  arr[1] = 20;
+  console.log(arr[0], arr[1], arr[2]);</code></pre><figure id="b9424e39-5dd6-4fd3-a50c-b30c458a3af7" class="image"><a href="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%205.png"><img style="width:216px" src="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%205.png"/></a></figure><p id="a34b9973-7505-40f3-9694-f37c871adebc" class="">쭉이어서 메소드 확인 후 마지막 결과 표기</p><h3 id="8da6c08d-a967-48d1-8331-73b7804e9c44" class="">length() - 배열의 길이</h3><pre id="508dcb0a-153d-44b9-9630-22eb3c9e35ee" class="code"><code>var arr = new Array(&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;,&#x27;d&#x27;,&#x27;e&#x27;);
+  console.log(&#x27;길이:&#x27; + arr.length);    // 길이 : 5</code></pre><h3 id="1a68f676-12de-48b5-8cad-219a1d9b6008" class="">push() - 마지막에 값 추가</h3><div id="250bc577-0f15-4ee5-82b4-183e89ee92e8" class="column-list"><div id="4ffcff8d-2db3-40a8-b488-d8cf3108b323" style="width:50%" class="column"><pre id="cda67f2a-6572-4ffb-8004-1cd425909bf5" class="code"><code>arr.push(100);
+  arr.push(200);
+  console.log(arr);</code></pre></div><div id="b290e659-9e93-4a47-8e67-d3bca006fb0a" style="width:50%" class="column"><figure id="8816ba8e-b7db-4991-8a1a-e4043fc32dfe" class="image"><a href="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%206.png"><img style="width:344px" src="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%206.png"/></a></figure></div></div><h3 id="1829b9f5-de50-41fd-8c0c-af86b247f078" class="">pop() - 마지막에 값 제거</h3><div id="8802e691-8d65-4eff-a836-bf600239db9b" class="column-list"><div id="4ff0c4ec-b247-4d8f-bf07-0161d6d19d01" style="width:50%" class="column"><pre id="1d2d795f-0a9e-4f98-86a8-2efc78e97fe4" class="code"><code>arr.pop();
+  console.log(arr);</code></pre></div><div id="a40e68b8-b7ca-4b25-8125-c1a1670ab210" style="width:50%" class="column"><figure id="e2a4d034-fcca-4201-af4c-d7e1e23176d6" class="image"><a href="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%207.png"><img style="width:303px" src="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%207.png"/></a></figure></div></div><h3 id="363c1964-0d52-47d8-b890-18248ec6f01b" class="">unshift() - 앞에서 값 추가</h3><div id="aa3cdc79-1d6f-4806-829f-c15c54258ec5" class="column-list"><div id="6a9735ba-22f4-43c7-a42f-43b4115dc772" style="width:50%" class="column"><pre id="e898395d-d33d-4a17-b5f6-6e4572b948da" class="code"><code>arr.unshift(100);
+  console.log(arr);</code></pre></div><div id="b2fcef64-891d-40eb-b70c-611b263b7863" style="width:50%" class="column"><figure id="aedd73d4-abf4-4461-a0df-4596349097ec" class="image"><a href="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%208.png"><img style="width:340px" src="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%208.png"/></a></figure></div></div><h3 id="20bc5306-cc8c-495e-bd91-e151a0f1c132" class="">shift() - 앞에서 값 제거</h3><div id="1664a25e-8672-4d74-a83f-ffb47a7e076b" class="column-list"><div id="2147c661-71fb-4037-90d5-c93d3f65a662" style="width:50%" class="column"><pre id="78cdf4d2-223e-44cd-b9c3-2bbfa6ae2465" class="code"><code>arr.shift();
+  console.log(arr);</code></pre></div><div id="ba4031a8-59e4-445f-b181-ea87e1b914c4" style="width:50%" class="column"><figure id="8833f026-b55f-400b-9587-dcd48e04c1ae" class="image"><a href="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%209.png"><img style="width:284px" src="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%209.png"/></a></figure></div></div><h3 id="c5fc2119-1c65-44d4-a61e-e671b6e9d01a" class="">splice() - 배열의 중간에 추가, 삭제</h3><div id="dd74af28-4d42-4d06-bcf8-9b019c173a32" class="column-list"><div id="809230c1-b3ee-4f5b-8a25-5a57511ef48e" style="width:50.000000000000014%" class="column"><pre id="eea27584-3c6b-49b3-8781-0bb69e869294" class="code"><code>// splice(index, 삭제 갯수)
+  // 1번 인덱스에서 1개삭제
+  arr.splice(1,1);      
+  console.log(arr);
+  
+  // 1번 인덱스에서 2개 삭제
+  arr.splice(1, 2);      
+  console.log(arr);</code></pre><pre id="e17e491d-39ef-44c0-a5dc-11070a5a113a" class="code"><code>// splice(index, 삭제갯수, +추가할 값)
+  arr.splice(1, 0, &#x27;park&#x27;, &#x27;kim&#x27;, &#x27;lee&#x27;);
+  console.log(arr);</code></pre></div><div id="5d34fdde-6f19-4bc0-99e0-fce0b664b378" style="width:50%" class="column"><figure id="5ad4f1c1-1537-496d-ab1e-f0ba406fc875" class="image"><a href="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%2010.png"><img style="width:297px" src="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%2010.png"/></a></figure><figure id="aa94f2fa-eab2-4996-9bf8-81e2ebda3728" class="image"><a href="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%2011.png"><img style="width:338px" src="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%2011.png"/></a></figure><p id="05c22996-6e2b-4d76-8207-4503cd587ac0" class="">
+  </p></div></div><h3 id="94a7200e-797c-4208-b558-cb9e49e7af72" class="">sort() - 정렬</h3><div id="6afb73ef-c1fa-4c3f-b70a-ccdd55e2b630" class="column-list"><div id="14efe6e0-f0f1-4c20-8a5e-0be6119f6c81" style="width:50%" class="column"><pre id="61e3a7ca-179c-4d05-8a9e-8540b4500814" class="code"><code>arr.sort();
+  console.log(arr);  </code></pre></div><div id="965936a3-8314-479f-84ba-6c2c14d6da87" style="width:50%" class="column"><figure id="0ee2d84e-b572-447a-bddf-5d23e0d96062" class="image"><a href="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%2012.png"><img style="width:309px" src="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%2012.png"/></a></figure></div></div><h3 id="002dfedc-aef5-44b6-9051-90e7ea941b49" class="">reverse() - 역정렬</h3><div id="a3e7f1d2-9e3c-43fb-9bf2-c74757602755" class="column-list"><div id="adc63a7f-e4a2-4e68-87ed-3f8f647e48b1" style="width:50%" class="column"><pre id="73bebfe5-aba4-422a-b395-7bcb3ffca069" class="code"><code>arr.reverse();
+  console.log(arr);</code></pre></div><div id="1ce8f67d-067e-48b6-a878-18b9ba0dd5f8" style="width:50%" class="column"><figure id="be852eed-69de-4d78-8c11-11ffac3b8e84" class="image"><a href="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%2013.png"><img style="width:321px" src="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%2013.png"/></a></figure></div></div><h3 id="97a0ae4d-b3dc-45f6-b3bd-daf47dae9e6e" class="">indexof() - 탐색</h3><pre id="b27e2d23-0118-4561-860e-9b2c3523a642" class="code"><code>var find = arr.indexOf(&quot;a&quot;);
+  console.log(&quot;a가 존재하는 위치 :&quot;, find);
+  // 결과 ) a가 존재하는 위치 : 4</code></pre><hr id="8b972f25-8682-42a0-8e9d-115b72b24c63"/><h1 id="612f8353-23b5-44d3-ac2e-d814e7f7a79d" class="">조건문</h1><p id="4f8f2671-393a-45d0-a030-f9e1a74c2905" class="">자바와 사용방법이 동일</p><h2 id="fbf7f982-d8be-4818-a40f-2848ca53a2a5" class="">if esle</h2><pre id="5265f364-3ec4-474d-ade1-85431b0251c0" class="code"><code>var num1 = 1;
+  var num2 = 2;
+      
+  if(num1 &gt; num2 &amp;&amp; true) {
+    document.write(&quot;참 입니다.&lt;br&gt;&quot;);
+  } else{
+    document.write(&quot;거짓입니다.&lt;br&gt;&quot;)
+  }
+  
+  var name = &#x27;홍길동&#x27;;
+  if(name === &#x27;홍길동&#x27;){
+    console.log(&quot;홍길동이 맞습니다.&quot;);
+  }</code></pre><h3 id="fc93bfe4-a4e9-4853-bf4d-a65813131c4a" class="">중첩if</h3><pre id="d1816bdb-6a0f-409f-8d59-80d622eead81" class="code"><code>// Math.random() - 0~1미만 랜덤 수
+      console.log(Math.random());
+  
+      var point = Math.random()*101;
+      console.log(point);
+  
+      var point = parseInt(Math.random()*101);
+      console.log(point);  /* int로 바꿔주는 기능 - 자바와 달리 integer가 들어가지 않음. */
+  
+      if (point &gt;= 90) {
+          if (point &gt;= 95) {
+            console.log(&quot;A&quot;);
+          } else {
+            console.log(&quot;B&quot;);
+          }
+        } else if (point &gt;= 80) {
+          console.log(&quot;C&quot;);
+        } else {
+          console.log(&quot;D&quot;);
+        }</code></pre><h2 id="ae75552a-236a-4cfb-a973-b08e0890f001" class="">switch</h2><pre id="9fa396d1-768c-4548-af1c-d14e13990620" class="code"><code>switch (name) {
+      case &quot;홍길동&quot;:
+        console.log(&quot;홍길동입니다.&quot;);
+        break;
+      case &quot;이순신&quot;:
+        console.log(&quot;이순신입니다.&quot;);
+        break;
+      default:
+        console.log(&quot;둘다 아닙니다.&quot;);
+        break;
+    }</code></pre><hr id="7846ad9c-1431-494f-9677-73189b2b4d76"/><h1 id="f10c3b01-f7c9-4e6a-a1c5-f9dbbb155ed1" class="">반복문</h1><p id="22a15c73-a728-48a1-9523-0abe201e9889" class="">자바와 사용방법이 동일 하여 추가된 for in 부분만을 살펴보았다.</p><h2 id="66ea8d02-ea3f-4698-9ca6-80e44fbb5a3f" class="">while / do while / for</h2><h2 id="39ce78e3-4371-4f17-8eb4-4ce0dbc18a44" class="">for in</h2><p id="831e94fb-c952-4cf3-9b53-efe0b84ad2d3" class="">기본 배열에서의 사용법</p><pre id="3964abbf-0229-458b-a526-71879d91e3b1" class="code"><code>var arr = [1,2,3,4,5, &quot;홍길동&quot;, &quot;이순신&quot;];
+      
+      // 주의 : 배열의 객체의 index or key값을 변수에 저장
+      for (var i in arr) {
+        console.log(i);   // index가 출력됨.
+      }
+  
+      for(var i in arr){
+        console.log(arr[i]);   // 값
+      }</code></pre><figure id="4331cc27-3702-44ee-b7cf-d87d0a378c44" class="image"><a href="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%2014.png"><img style="width:194px" src="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%2014.png"/></a></figure><p id="915fffb2-e675-41ee-b321-31466761bfe2" class="">객체형태에서의 사용법</p><pre id="728bfe09-1ed8-4c8f-a6db-ad63f2fd651e" class="code"><code>// 자바스크립드의 객체형태에서는 키를 뽑는다.
+      var obj = {&quot;key1&quot;:&quot;가&quot;,&quot;key2&quot;:&quot;나&quot;,&quot;key3&quot;:&quot;다&quot;,}
+      console.log(obj);
+  
+      for(var i in obj){
+        console.log(i);  /* key값 */
+      }
+      for(var i in obj){
+        console.log(obj[i]);  /* key에 해당하는 값 */
+      }</code></pre><figure id="237b7f29-bd13-4d04-b8aa-6db93b34d600" class="image"><a href="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%2015.png"><img style="width:136px" src="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%2015.png"/></a></figure><hr id="b195d6f1-bb84-445d-98f7-f755e9f0fa32"/><h1 id="ec9432e5-b66d-4d82-8fce-8bc0a84a2050" class="">탈출문</h1><h2 id="40826dc2-31ac-4d9d-b494-54efd88448c8" class="">break / continue</h2><pre id="158ed1cb-cfb9-4f00-9d38-4e97ab584bf8" class="code"><code>var arr = [1,2,3,4,5];
+      for(var i = 0; i &lt; arr.length; i++){
+        if(i===2){
+          break;
+        }
+        console.log(i);
+      }
+  console.log(&#x27;----------------&#x27;);
+      for(var i = 0; i&lt; arr.length;i++){
+        if(i===2) continue;
+        console.log(i);
+      }</code></pre><figure id="f47475df-1263-4bff-bf6c-03050aeca5e1" class="image"><a href="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%2016.png"><img style="width:175px" src="JavaScript%20b6d26017626a43eeb520f32cf28b1f0a/Untitled%2016.png"/></a></figure><hr id="c3a6e557-3417-40d2-bb3b-b416d58aee9e"/><p id="6732090e-864d-4349-a567-6ad2eee6366a" class="">
+  </p></div></article></body></html>

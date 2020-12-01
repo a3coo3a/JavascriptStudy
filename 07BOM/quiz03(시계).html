@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <style>
+    body{
+      animation: backin 1s linear;
+    }
+    @keyframes backin{
+      0% {opacity: 0;}
+      20%{opacity: 0.2;}
+      40%{opacity: 0.4;}
+      60%{opacity: 0.6;}
+      80%{opacity: 0.8;}
+      100% {opacity: 1;}
+    }
+  </style> -->
+</head>
+<body data-img='{"1":"img/1.jpg","2":"img/2.jpg","3":"img/3.jpg","4":"img/4.jpg"}'>
+  
+  <div class="clock">
+    <h3>00:00:00</h3>
+  </div>
+
+  <script>
+    var data = JSON.parse(document.body.dataset.img);
+    document.body.style.color = "white";
+    document.body.style.backgroundImage = "url("+data[1]+")";
+    var index = 0;
+    (function(){
+      setInterval(function(){
+        var date = new Date();
+        // 두자리수 또 다른 방법 (date.getHours() < 10 ? "0"+date.getHours() : data.getHours())
+        var dateStr = ("00"+date.getHours()).slice(-2)+":"+("00"+date.getMinutes()).slice(-2)+":"+("00"+date.getSeconds()).slice(-2);
+        var clock = document.querySelector(".clock h3");
+        clock.innerHTML = dateStr;
+        if(date.getSeconds()%10 === 1){
+          if(index === 4) index = 0;
+          document.body.style.backgroundImage = "url("+data[++index]+")";
+        }
+      },1000)
+    })();
+
+    // Object의 길이
+    // Object.keys(객체).length
+  </script>
+</body>
+</html>
