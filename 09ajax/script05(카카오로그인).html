@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 1. 카카오 SDK 호출 -->
+  <!-- <script src="js/kakao.js"></script> -->
+  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+  
+
+  <!-- 3. "도구>데모>카카오 로그인>로그인" 에 예시있음  -->
+  <a id="custom-login-btn" href="javascript:loginWithKakao()">
+    <img
+      src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
+      width="222"
+    />
+  </a>
+  
+  
+  <script>
+    /* 2. 초기화하기 */
+    // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('54f3dc16451dc4bf406f8a9204411943');
+
+    // SDK 초기화 여부를 판단합니다.
+    //console.log(Kakao.isInitialized());   // 성공시 true
+    Kakao.isInitialized()
+
+    /* 3. 사용방법을 확인하고, 코드를 해석해서 로그인 가능 */
+    
+      function loginWithKakao() {
+        Kakao.Auth.login({
+          success: function(authObj) {  // 카카오계정을 통한 로그인성공시
+            // 접근권한 - 어세스 토큰 저장
+            //console.log(JSON.stringify(authObj));
+            //console.log(authObj.access_token);
+            Kakao.Auth.setAccessToken(authObj.access_token);
+
+            /* 4. 사용자 계정 정보를 여는 함수를 호출 */
+            getInfo();
+
+          },
+          fail: function(err) {  // 실패시 에러 메세지 출력
+            alert(JSON.stringify(err))
+          },
+        })
+      }
+
+      // 4. 사용자 계정 정보 얻는 기능
+      function getInfo(){
+        Kakao.API.request({   // 해당함수가 다시한번 카카오 서버로 요청을 해서 필요한 사용자 정보르 콜백함수로 얻어옵니다.
+          url: '/v2/user/me',
+          success: function(res) {   // 성공시 얻어오는 사용자 정보
+            //console.log(JSON.stringify(res));   // 문자열로 확인
+            console.log(res);    // 제이슨으로 확인
+
+            // 1. email 정보 추출
+            console.log(res.kakao_account.email);
+            // 2. 프로필 이미지 추출
+            console.log(res.properties.profile_image);
+            // 3. 닉네임
+            console.log(res.properties.nickname);
+          },
+          fail: function(error) {   // 실패시 에러 메세지 출력
+            alert(
+              'login success, but failed to request user information: ' +
+                JSON.stringify(error)
+            )
+          },
+        })
+      }
+    
+</script>
+
+</body>
+</html>

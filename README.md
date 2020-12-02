@@ -234,3 +234,15 @@ Document Object Model
   for(var i in cookies){
   if(cookies[i].search(name) != -1) return true;
   }
+
+# 2020년 12월 02일
+
+## AJAX
+
+비동기 통신
+주로 json 형식으로 통신이 이루어짐
+
+- json 형식 사용
+- xml 형식 사용
+
+## 공공데이터 가져오기
