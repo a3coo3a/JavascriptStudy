@@ -18,19 +18,20 @@
       width="222"
     />
   </a>
-  
+  <hr/>
+  <!-- 로그아웃 버튼 -->
+  <button class="api-btn" onclick="kakaoLogout()">로그아웃</button>
   
   <script>
     /* 2. 초기화하기 */
     // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('54f3dc16451dc4bf406f8a9204411943');
+    Kakao.init('자바스크랩트키');
 
     // SDK 초기화 여부를 판단합니다.
     //console.log(Kakao.isInitialized());   // 성공시 true
     Kakao.isInitialized()
 
     /* 3. 사용방법을 확인하고, 코드를 해석해서 로그인 가능 */
-    
       function loginWithKakao() {
         Kakao.Auth.login({
           success: function(authObj) {  // 카카오계정을 통한 로그인성공시
@@ -72,7 +73,19 @@
           },
         })
       }
-    
+
+      // 5. 로그아웃
+      // - 어세스 토큰을 만료시켜주는 로그아웃 기능
+      // - 다른 세션에 대해서는 반드시 별도로 종료해야 함.
+      function kakaoLogout() {
+        if (!Kakao.Auth.getAccessToken()) {
+          alert('Not logged in.')
+          return
+        }
+        Kakao.Auth.logout(function() {
+          alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken())
+        })
+      }
 </script>
 
 </body>

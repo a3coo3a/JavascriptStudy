@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqXBZVI3U0Y3pMfjyiga22uFaiy-Kifeg&callback=initMap">
+  </script>
+  <style>
+    .selectGu{
+      text-align: center;
+      padding: 20px;
+    }
+    #map {
+      height: 50%;
+      width: 50%;
+      margin: 0 auto;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- 지역 -->
+  <div class="selectGu">
+    지역 : 
+    <select class="gu">
+    </select>
+  </div>
+  <!-- 지도 -->
+  <div id="map"></div>
+
+  <script>
+    // 내 중심좌표 어디서든 사용할 수 있게 멤버 변수로 선언하기
+    //var lat;
+    //var lng;
+    const myLatLng = { lat: "", lng: "" };
+    // 자료가져오기
+    function getFetch(gu){
+      fetch("http://openAPI.seoul.go.kr:8088/535271697a6c656539306354764564/json/PublicWiFiPlaceInfo/1/1000/"+gu)
+      .then(function(response){
+        return response.json();
+      }).then(function(jsonData){
+        console.log(jsonData);        
+
+        // 지도의 맵을 생성하는 코드
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 15,
+          center: (jsonData.PublicWiFiPlaceInfo === undefined? myLatLng : {lat : jsonData.PublicWiFiPlaceInfo.row[0].INSTL_Y, lng : jsonData.PublicWiFiPlaceInfo.row[0].INSTL_X}),
+        });
+      
+        //{lat : data[0].INSTL_Y ,lng : data[0].INSTL_X}
+        // 데이터가 없는 경우, 함수종료
+        if(jsonData.PublicWiFiPlaceInfo === undefined){
+          return;
+        }
+
+        // json 데이터 정보 분해
+        var data = jsonData.PublicWiFiPlaceInfo.row;
+        //console.log(data[0].INSTL_X);
+        //console.log(data[0].INSTL_Y);
+
+        // 지도의 데이터에 대한 마커를 찍어주는 구문
+        for(var i = 0; i < data.length; i++){
+          var latLng = {lat : data[i].INSTL_Y, lng : data[i].INSTL_X};
+          const marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            title : data[i].PLACE_NAME
+          });
+        }
+
+
+      })
+    }
+
+    // 3. 셀렉트 이벤트
+    var handleSelect = document.querySelector(".gu");
+    handleSelect.addEventListener("change",function(){
+      //console.log(handleSelect.value);
+      //console.log(this.value)
+      //console.log(event.target.value);  // 3가지 모두 같은 결과
+
+      getFetch(event.target.value);
+    })
+    
+    // 2. 구 생성 구문
+    function createGu(){
+      var gu_list = new Array("강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구");
+      gu_list.sort();                 // 정렬
+      gu_list.unshift("선택");        // 맨 위에 선택 넣기
+
+      var gu = document.querySelector(".gu");
+      for(var i = 0; i < gu_list.length;i++){
+        var option = document.createElement("option");
+        option.innerHTML = gu_list[i];
+        gu.appendChild(option);
+      }
+    }
+
+    // 위치정보 성공 함수
+    function coordSuccess(position){  // 첫번째 매개변수의 사용자의 위치정보
+      myLatLng.lat = position.coords.latitude;
+      myLatLng.lng = position.coords.longitude;
+      console.log("내 위치정보 : ",  myLatLng.lat,  myLatLng.lng);
+      getFetch();
+    }
+    // 위치정보 실패 함수
+    function coordFail(){
+      alert("위치정보를 받아 오는데 실패했습니다~");
+    }
+    
+    // 1. 즉시실행함수
+    function initMap(){
+      createGu();
+      //getFetch();
+      // 함수로 정의 해서 구 정도 받아오기
+      navigator.geolocation.getCurrentPosition(coordSuccess, coordFail);
+    }
+   </script>
+</body>
+</html>
