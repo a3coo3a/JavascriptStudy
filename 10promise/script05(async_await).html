@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var num1 = null;
+    var num2 = null;
+    /*
+    function ajax(){
+      // hi.txt -> hi.json
+      fetch("hi.txt").then(function(response){
+        return response.text();
+      }).then(function(data){
+        num1 = data;  // 멤버변수의 데이터 저장
+        console.log(data);
+
+        fetch("hi.json").then(function(response){
+          return response.json();
+        }).then(function(data){
+          num2 = data; // 멤버변수의 데이터 저장
+          console.log(data);
+        })
+
+      })
+    }
+    */
+    // 위의 코드를 async_await 구조로 변경
+    async function ajax(){
+      var num1 = await fetch("hi.txt").then(function(response){
+        return response.text();
+      })
+      console.log(num1);
+      var num2 = await fetch("hi.json").then(function(response2){
+        return response2.json();
+      })
+      console.log(num2);
+    }
+
+    (function(){
+      ajax();
+    })();
+
+    // dom 제어
+    // 이벤트 위임
+    // 비동기 서버 주고받기
+
+
+
+
+
+
+  </script>
+
+
+
+
+
+</body>
+</html>

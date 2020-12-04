@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <h2>jsp에 서블릿으로 데이터를 요청(응답)</h2>
+
+  <button type="button" onclick="ajax()">ajax요청해보기</button>
+  <script>
+    function ajax(){
+      // fetch에 두번째 인자값에는 비동기통신의 옵션이 들어갑니다.
+      // json형식인지 from 형식인지 헤더쪽에 알려줘야 함.
+      // 이클립스는 json이 뭔지 모른다;;;;;  -> 그래서, 많은 처리가 필요하다. 
+      // 이클립스는 form 데이터 형식은 안다.
+      fetch("http://localhost:8181/AJAX/AjaxColltroller",{
+        method: 'POST', //보내는 방식 : *GET, POST, PUT, DELETE, etc.
+        mode: 'no-cors', // no-cors(서버가 다른경우 cross origin 허용), cors(서버가다른경우), *same-origin(같은서버만사용)
+        headers: {  // 어떤 데이터 정보를 보낼것인가
+            //'Content-Type': 'application/json',     // json형식으로 보내겠다.
+            'Content-Type': 'application/x-www-form-urlencoded',   // form 데이터 형식으로 보내겠다
+        }, // body: 어떤 내용을 실을것인가
+        body: "id=kkk123&name=홍길동" // body data type must match "Content-Type" header
+        // 제이슨이면, JSON.stringify(data)
+        
+        //cache: 'no-cache', //임시저장소사용여부: *default, no-cache, reload, force-cache, only-if-cached
+        //credentials: 'same-origin', //쿠키값을 전송여부: include, *same-origin, omit
+        //redirect: 'follow', // manual, *follow, error
+        //referrer: 'no-referrer', // no-referrer, *client
+      }).then(function(response){
+          return response.text();
+      }).then(function(data){
+        console.log(data);
+      })
+    }
+  </script>
+</body>
+</html>

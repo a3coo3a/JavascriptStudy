@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //var promise = fetch("kkk123");
+    //console.log(promise);
+
+    /*
+      promise는 자바 스크립트에 내장된 내장 객체
+      알아둬야 하는건 딱, 상태메세지이다
+      pending - 수행중
+      fulfilled - 완료
+      rejected - 실패
+    */
+
+    // 프로미스 생성 - 매개변수로 콜백 함수를 전달받고 (다시 함수의 매개변수로 resolve, reject 성공실패에 대한 함수를 받습니다)
+    var promise = new Promise(function(success, fail){
+      console.log("바로실행");
+      setTimeout(function(){
+        success(10);  // 매개변수로 들어온 success
+        //fail(new Error());      //인위적으로 에러 발생
+      },5000);  //5초 이후에 실행 (다른 서버에 요청을 하고 결과를 돌려받는데 5초)
+    });
+
+    console.log(promise);
+
+    //프로미스의 사용
+    //then은 promise가 정상적으로 실행된다면, 결과를 실행시켜주는 콜백함수
+    //catch은 promise가 실패하면, 결과를 실행시켜 주는 콜백함수
+    promise.then(function(data){
+      console.log(data);
+    }).catch(function(error){
+      console.log(error);
+    })
+
+
+    // 프로미스 사용 2
+    // 함수형 프로그래밍 - .찍고, .찍고, .찍고 이렇게 진행되는 것
+    // then에서의 return은 다시 그결과가 promise이기 때문에 then을 연쇄적으로 사용 가능하다.
+    var t = promise.then(function(data){
+      console.log(data);
+      return data*100;
+    }).then(function(data){
+      console.log(data);
+      return data/5;
+    }).then(function(data){
+      console.log(data);
+    })
+
+    console.log(t);
+
+    // 하나의 화면에서 비동기 콜이 연쇄적으로 2개 이상...
+  </script>
+</body>
+</html>
